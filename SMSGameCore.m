@@ -194,19 +194,19 @@ console_t *cur_console;
 {
     uint32_t f_x, f_y;
     cur_console->frame_size(&f_x, &f_y);
-    return OEIntSizeMake(f_x, f_y);
+    return CGSizeMake(f_x, f_y);
 }
 
-- (OEIntRect)screenRect
+- (CGRect)screenRect
 {
     uint32_t a_x, a_y, a_w, a_h;
     cur_console->active_size(&a_x, &a_y, &a_w, &a_h);
-    return OEIntRectMake(a_x, a_y, a_w, a_h);
+    return CGRectMake(a_x, a_y, a_w, a_h);
 }
 
 - (OEIntSize)aspectSize
 {
-    return OEIntSizeMake(cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0), cur_console->console_type == CONSOLE_GG ? 144 : 192);
+    return CGSizeMake(cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0), cur_console->console_type == CONSOLE_GG ? 144 : 192);
 }
 
 - (const void *)getVideoBufferWithHint:(void *)hint

@@ -25,7 +25,7 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import <OpenEmuBase/OEGameCore.h>
+#import <OpenEmuBase/PVEmulatorCore.h>
 
 typedef enum SMSButtons {
     SMSPad1Up      = 0,
@@ -47,6 +47,6 @@ typedef enum SMSButtons {
 
 @class OERingBuffer;
 
-OE_EXPORTED_CLASS
-@interface SMSGameCore : OEGameCore
+__attribute__((visibility("default")))
+@interface SMSGameCore : PVEmulatorCore
 @end
