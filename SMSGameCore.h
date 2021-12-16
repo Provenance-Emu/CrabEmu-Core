@@ -24,28 +24,8 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Cocoa/Cocoa.h>
-#import <OpenEmuBase/PVEmulatorCore.h>
-
-typedef enum SMSButtons {
-    SMSPad1Up      = 0,
-    SMSPad1Down    = 1,
-    SMSPad1Left    = 2,
-    SMSPad1Right   = 3,
-    SMSPad1A       = 4,
-    SMSPad1B       = 5,
-    SMSPad2Up      = 6,
-    SMSPad2Down    = 7,
-    SMSPad2Left    = 8,
-    SMSPad2Right   = 9,
-    SMSPad2A       = 10,
-    SMSPad2B       = 11,
-    SMSReset       = 12,
-    GGStart        = 13,
-    SMSButtonCount = 14
-} SMSButtons;
-
-@class OERingBuffer;
+#import <Foundation/Foundation.h>
+#import <PVSupport/PVSupport.h>
 
 __attribute__((visibility("default")))
 @interface SMSGameCore : PVEmulatorCore

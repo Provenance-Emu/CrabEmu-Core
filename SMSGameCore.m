@@ -25,12 +25,10 @@
  */
 
 #import "SMSGameCore.h"
-#import <OpenEmuBase/OERingBuffer.h>
-#import <OpenGL/gl.h>
-#import "OESMSSystemResponderClient.h"
-#import "OEGGSystemResponderClient.h"
-#import "OESG1000SystemResponderClient.h"
-#import "OEColecoVisionSystemResponderClient.h"
+#import <OpenGLES/gltypes.h>
+#import <OpenGLES/ES3/gl.h>
+#import <OpenGLES/ES3/glext.h>
+#import <OpenGLES/EAGL.h>
 
 #include "sms.h"
 #include "smsmem.h"
@@ -50,7 +48,7 @@
 
 #define SAMPLERATE 44100
 
-@interface SMSGameCore () <OESMSSystemResponderClient, OEGGSystemResponderClient, OESG1000SystemResponderClient, OEColecoVisionSystemResponderClient>
+@interface SMSGameCore () <PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
 {
     NSLock        *bufLock;
     BOOL           paused;
@@ -94,7 +92,7 @@ console_t *cur_console;
     //TODO: add choice NTSC/PAL
     if(console == CONSOLE_COLECOVISION)
     {
-        NSString *biosPath = [[self biosDirectoryPath] stringByAppendingPathComponent:@"coleco.rom"];
+        NSString *biosPath = [[self BIOSPath] stringByAppendingPathComponent:@"coleco.rom"];
         coleco_init(VIDEO_NTSC);
         coleco_mem_load_bios(biosPath.fileSystemRepresentation);
         coleco_mem_load_rom(path.fileSystemRepresentation);
@@ -124,7 +122,7 @@ console_t *cur_console;
                     break;
                 case 4: // SMS Export
                     // Force system region to Japan if user locale is Japan and the cart is world/multi-region
-                    region = [[self systemRegion] isEqualToString: @"Japan"] ? SMS_REGION_DOMESTIC : SMS_REGION_EXPORT;
+                    region = SMS_REGION_EXPORT; //[[self systemRegion] isEqualToString: @"Japan"] ? SMS_REGION_DOMESTIC : SMS_REGION_EXPORT;
                     break;
                 case 5: // GG Japan
                 case 6: // GG Export
@@ -146,7 +144,7 @@ console_t *cur_console;
     if(cur_console->console_type != CONSOLE_COLECOVISION)
     {
         NSString *extensionlessFilename = [[romFile lastPathComponent] stringByDeletingPathExtension];
-        NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesDirectoryPath]];
+        NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
         [[NSFileManager defaultManager] createDirectoryAtURL:batterySavesDirectory withIntermediateDirectories:YES attributes:nil error:nil];
         NSURL *saveFile = [batterySavesDirectory URLByAppendingPathComponent:[extensionlessFilename stringByAppendingPathExtension:@"sav"]];
 
@@ -157,11 +155,16 @@ console_t *cur_console;
     return YES;
 }
 
-- (void)executeFrame
+- (void)executeFrameSkippingFrame: (BOOL) skip
 {
     [bufLock lock];
     cur_console->frame(0);
     [bufLock unlock];
+}
+
+- (void)executeFrame
+{
+    [self executeFrameSkippingFrame:NO];
 }
 
 - (void)resetEmulation
@@ -174,7 +177,7 @@ console_t *cur_console;
     if(cur_console->console_type != CONSOLE_COLECOVISION)
     {
         NSString *extensionlessFilename = [[romFile lastPathComponent] stringByDeletingPathExtension];
-        NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesDirectoryPath]];
+        NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
         NSURL *saveFile = [batterySavesDirectory URLByAppendingPathComponent:[extensionlessFilename stringByAppendingPathExtension:@"sav"]];
 
         cur_console->save_sram(saveFile.path.fileSystemRepresentation);
@@ -209,22 +212,32 @@ console_t *cur_console;
     return CGSizeMake(cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0), cur_console->console_type == CONSOLE_GG ? 144 : 192);
 }
 
-- (const void *)getVideoBufferWithHint:(void *)hint
-{
-    if (!hint) {
-        return cur_console->framebuffer();
-    }
-    return smsvdp.framebuffer = (uint32*)hint;
+- (const void *)videoBuffer {
+    return cur_console->framebuffer();
 }
+
+//
+//- (const void *)getVideoBufferWithHint:(void *)hint
+//{
+//    if (!hint) {
+//        return cur_console->framebuffer();
+//    }
+//    return smsvdp.framebuffer = (uint32*)hint;
+//}
 
 - (GLenum)pixelFormat
 {
-    return GL_BGRA;
+    return GL_BGRA; //GL_BGRA;
 }
 
 - (GLenum)pixelType
 {
-    return GL_UNSIGNED_INT_8_8_8_8_REV;
+    return GL_UNSIGNED_INT; //GL_UNSIGNED_INT_8_8_8_8_REV;
+}
+
+- (GLenum)internalPixelFormat
+{
+    return GL_RGBA;
 }
 
 # pragma mark - Audio
@@ -248,7 +261,7 @@ console_t *cur_console;
 
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
-    if([[self systemIdentifier] isEqualToString:@"openemu.system.sg1000"])
+    if([[self systemIdentifier] isEqualToString:@"com.provenance.sg1000"])
     {
         cur_console->load_state([fileName fileSystemRepresentation]);
         block(YES, nil);
@@ -275,7 +288,7 @@ console_t *cur_console;
     }
 
     if(outError) {
-        *outError = [NSError errorWithDomain:OEGameCoreErrorDomain code:OEGameCoreCouldNotSaveStateError userInfo:@{
+        *outError = [NSError errorWithDomain:@"" code:-1 userInfo:@{
             NSLocalizedDescriptionKey : @"Save state data could not be written",
             NSLocalizedRecoverySuggestionErrorKey : @"The emulator could not write the state data."
         }];
@@ -305,7 +318,7 @@ console_t *cur_console;
         return YES;
 
     if(outError) {
-        *outError = [NSError errorWithDomain:OEGameCoreErrorDomain code:OEGameCoreCouldNotLoadStateError userInfo:@{
+        *outError = [NSError errorWithDomain:@"" code:-1 userInfo:@{
             NSLocalizedDescriptionKey : @"The save state data could not be read",
             NSLocalizedRecoverySuggestionErrorKey : @"Could not load data from the save state"
         }];
@@ -364,25 +377,34 @@ void gui_set_console(console_t *c)
 const int MasterSystemMap[] = {SMS_UP, SMS_DOWN, SMS_LEFT, SMS_RIGHT, SMS_BUTTON_1, SMS_BUTTON_2, GAMEGEAR_START};
 const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_LEFT, COLECOVISION_RIGHT, COLECOVISION_L_ACTION, COLECOVISION_R_ACTION, COLECOVISION_1, COLECOVISION_2, COLECOVISION_3, COLECOVISION_4, COLECOVISION_5, COLECOVISION_6, COLECOVISION_7, COLECOVISION_8, COLECOVISION_9, COLECOVISION_0, COLECOVISION_STAR, COLECOVISION_POUND};
 
-- (oneway void)didPushGGButton:(OEGGButton)button;
-{
+//- (oneway void)didPushMasterSystemButton:(PVMasterSystemButton)button;
+//{
+//    sms_button_pressed(1, MasterSystemMap[button]);
+//}
+//
+//- (oneway void)didReleaseMasterSystemButton:(PVMasterSystemButton)button;
+//{
+//    sms_button_released(1, MasterSystemMap[button]);
+//}
+
+- (void)didPushMasterSystemButton:(enum PVMasterSystemButton)button forPlayer:(NSInteger)player {
     sms_button_pressed(1, MasterSystemMap[button]);
 }
 
-- (oneway void)didReleaseGGButton:(OEGGButton)button;
-{
+- (void)didReleaseMasterSystemButton:(enum PVMasterSystemButton)button forPlayer:(NSInteger)player {
     sms_button_released(1, MasterSystemMap[button]);
 }
 
-- (oneway void)didPushSMSButton:(OESMSButton)button forPlayer:(NSUInteger)player;
-{
-    sms_button_pressed((int)player, MasterSystemMap[button]);
-}
 
-- (oneway void)didReleaseSMSButton:(OESMSButton)button forPlayer:(NSUInteger)player;
-{
-    sms_button_released((int)player, MasterSystemMap[button]);
-}
+//- (oneway void)didPushSMSButton:(PVSMSButton)button forPlayer:(NSUInteger)player;
+//{
+//    sms_button_pressed((int)player, MasterSystemMap[button]);
+//}
+//
+//- (oneway void)didReleaseSMSButton:(PVSMSButton)button forPlayer:(NSUInteger)player;
+//{
+//    sms_button_released((int)player, MasterSystemMap[button]);
+//}
 
 - (oneway void)didPushSMSStartButton;
 {
@@ -404,23 +426,23 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     sms_button_released(1, SMS_CONSOLE_RESET);
 }
 
-- (oneway void)didPushSG1000Button:(OESG1000Button)button forPlayer:(NSUInteger)player
+- (oneway void)didPushSG1000Button:(PVSG1000Button)button forPlayer:(NSUInteger)player
 {
     //console pause, sms_z80_nmi()
     sms_button_pressed((int)player, MasterSystemMap[button]);
 }
 
-- (oneway void)didReleaseSG1000Button:(OESG1000Button)button forPlayer:(NSUInteger)player
+- (oneway void)didReleaseSG1000Button:(PVSG1000Button)button forPlayer:(NSUInteger)player
 {
     sms_button_released((int)player, MasterSystemMap[button]);
 }
 
-- (oneway void)didPushColecoVisionButton:(OEColecoVisionButton)button forPlayer:(NSUInteger)player;
+- (oneway void)didPushColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSUInteger)player;
 {
     coleco_button_pressed((int)player, ColecoVisionMap[button]);
 }
 
-- (oneway void)didReleaseColecoVisionButton:(OEColecoVisionButton)button forPlayer:(NSUInteger)player;
+- (oneway void)didReleaseColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSUInteger)player;
 {
     coleco_button_released((int)player, ColecoVisionMap[button]);
 }

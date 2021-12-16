@@ -6,111 +6,152 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		82CAFB610FEDA62500CCDC7E /* Distribution */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 82CAFB710FEDA62C00CCDC7E /* Build configuration list for PBXAggregateTarget "Distribution" */;
-			buildPhases = (
-				82CAFB820FEDA6AC00CCDC7E /* CopyFiles */,
-				82CAFB600FEDA62500CCDC7E /* ShellScript */,
-			);
-			dependencies = (
-				82CAFB650FEDA62A00CCDC7E /* PBXTargetDependency */,
-			);
-			name = Distribution;
-			productName = Distribution;
-		};
-		82D8155D0F1D878700EF8CF5 /* Build & Install CrabEmu */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 82D815710F1D87B000EF8CF5 /* Build configuration list for PBXAggregateTarget "Build & Install CrabEmu" */;
-			buildPhases = (
-				82D8155C0F1D878700EF8CF5 /* ShellScript */,
-			);
-			dependencies = (
-				82D815610F1D879200EF8CF5 /* PBXTargetDependency */,
-			);
-			name = "Build & Install CrabEmu";
-			productName = "Build & Install";
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
-		1B46D09D14293CAD0025EF88 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B46D09C14293CAD0025EF88 /* libz.tbd */; };
-		27E3D4E41B6543BC00D8D8B5 /* fmemopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D4E21B6543BC00D8D8B5 /* fmemopen.c */; };
-		27E3D4E71B6543D500D8D8B5 /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D4E51B6543D500D8D8B5 /* open_memstream.c */; };
-		3720DB4D0F19510D00744A9A /* CrabEmu.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3720DB4C0F19510D00744A9A /* CrabEmu.icns */; };
-		834A0CAC1B79371A0073803A /* nesmapper2.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700DF1B675EB4006841C9 /* nesmapper2.c */; };
-		834A0CAD1B79371A0073803A /* nesmapper3.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E01B675EB4006841C9 /* nesmapper3.c */; };
-		834A0CAE1B79371A0073803A /* nesmapper7.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E11B675EB4006841C9 /* nesmapper7.c */; };
-		834A0CAF1B79371A0073803A /* nesmapper9.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E21B675EB4006841C9 /* nesmapper9.c */; };
-		834A0CB01B79371A0073803A /* nesmapper66.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E31B675EB4006841C9 /* nesmapper66.c */; };
-		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
-		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		9443D4411715F42200E452AC /* CrabZ80.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3FC1715F31000E452AC /* CrabZ80.c */; };
-		9443D4421715F42500E452AC /* CrabZ80d.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4001715F31000E452AC /* CrabZ80d.c */; };
-		9443D4431715F44E00E452AC /* 93c46.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AB1715F2EB00E452AC /* 93c46.c */; };
-		9443D4441715F45C00E452AC /* mappers.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C11715F2EB00E452AC /* mappers.c */; };
-		9443D4451715F46100E452AC /* sms.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C51715F2EB00E452AC /* sms.c */; };
-		9443D4461715F46900E452AC /* smsmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C91715F2EB00E452AC /* smsmem.c */; };
-		9443D4471715F47A00E452AC /* terebi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D21715F2EB00E452AC /* terebi.c */; };
-		9443D4481715F48300E452AC /* tms9918a.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D41715F2EB00E452AC /* tms9918a.c */; };
-		9443D4491715F4AC00E452AC /* sn76489.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4331715F33C00E452AC /* sn76489.c */; };
-		9443D44A1715F4F100E452AC /* smsmem-gg.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C71715F2EB00E452AC /* smsmem-gg.c */; };
-		9443D44B1715F50400E452AC /* mapper-93c46.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B11715F2EB00E452AC /* mapper-93c46.c */; };
-		9443D44C1715F50D00E452AC /* mapper-korean.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B71715F2EB00E452AC /* mapper-korean.c */; };
-		9443D44D1715F51000E452AC /* mapper-codemasters.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B31715F2EB00E452AC /* mapper-codemasters.c */; };
-		9443D44E1715F51400E452AC /* mapper-sega.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BD1715F2EB00E452AC /* mapper-sega.c */; };
-		9443D44F1715F51C00E452AC /* mapper-sg1000.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BF1715F2EB00E452AC /* mapper-sg1000.c */; };
-		9443D4501715F54100E452AC /* cheats.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AD1715F2EB00E452AC /* cheats.c */; };
-		9443D4511715F55800E452AC /* sdscterminal.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C31715F2EB00E452AC /* sdscterminal.c */; };
-		9443D4521715F5AA00E452AC /* smsvdp.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3CC1715F2EB00E452AC /* smsvdp.c */; };
-		9443D4531715F5B400E452AC /* smsz80.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D01715F2EB00E452AC /* smsz80.c */; };
-		9443D4541715F5CF00E452AC /* ym2413.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4361715F33C00E452AC /* ym2413.c */; };
-		9443D4551715F5DD00E452AC /* mapper-koreanmsx.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B91715F2EB00E452AC /* mapper-koreanmsx.c */; };
-		9443D4561715F5E700E452AC /* mapper-4PAA.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AF1715F2EB00E452AC /* mapper-4PAA.c */; };
-		9443D4571715F5F800E452AC /* colecomem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D39B1715F2EB00E452AC /* colecomem.c */; };
-		9443D4581715F5FC00E452AC /* colecovision.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D39D1715F2EB00E452AC /* colecovision.c */; };
-		9443D4591715F61000E452AC /* mapper-none.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BB1715F2EB00E452AC /* mapper-none.c */; };
-		9443D45A1715F61A00E452AC /* mapper-janggun.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B51715F2EB00E452AC /* mapper-janggun.c */; };
-		9443D45D1715F67D00E452AC /* rom.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D45B1715F67D00E452AC /* rom.c */; };
-		9443D45E1715F6BD00E452AC /* Crab6502.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3F41715F31000E452AC /* Crab6502.c */; };
-		9443D45F1715F6CA00E452AC /* Crab6502d.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3F81715F31000E452AC /* Crab6502d.c */; };
-		9443D4601715F6EB00E452AC /* nesapu-nosefart.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4311715F33C00E452AC /* nesapu-nosefart.c */; };
-		9443D4611715F6FA00E452AC /* nesmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A51715F2EB00E452AC /* nesmem.c */; };
-		9443D4621715F70800E452AC /* nes.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A31715F2EB00E452AC /* nes.c */; };
-		9443D4631715F71600E452AC /* nesppu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A81715F2EB00E452AC /* nesppu.c */; };
-		9443D4641715F71F00E452AC /* nesmapper0.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A11715F2EB00E452AC /* nesmapper0.c */; };
-		9443D4651715F72700E452AC /* nesmapper1.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A21715F2EB00E452AC /* nesmapper1.c */; };
-		9443D4661715F73300E452AC /* fds_snd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4291715F33C00E452AC /* fds_snd.c */; };
-		9443D4671715F74100E452AC /* mmc5_snd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42B1715F33C00E452AC /* mmc5_snd.c */; };
-		9443D4681715F74F00E452AC /* nes_apu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42D1715F33C00E452AC /* nes_apu.c */; };
-		9443D4691715F75700E452AC /* vrcvisnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42F1715F33C00E452AC /* vrcvisnd.c */; };
-		C66DFC1A0F51D82F0080AA28 /* SMSGameCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C66DFC180F51D82F0080AA28 /* SMSGameCore.m */; };
-		C6D120E91711302600E868A8 /* OpenEmuBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D120E71711302600E868A8 /* OpenEmuBase.framework */; };
+		B305F0B8276B6675003AE510 /* nes.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A31715F2EB00E452AC /* nes.c */; };
+		B305F0B9276B6675003AE510 /* sdscterminal.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C31715F2EB00E452AC /* sdscterminal.c */; };
+		B305F0BA276B6675003AE510 /* smsmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C91715F2EB00E452AC /* smsmem.c */; };
+		B305F0BB276B6675003AE510 /* ym2413.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4361715F33C00E452AC /* ym2413.c */; };
+		B305F0BC276B6675003AE510 /* sms.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C51715F2EB00E452AC /* sms.c */; };
+		B305F0BD276B6675003AE510 /* colecovision.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D39D1715F2EB00E452AC /* colecovision.c */; };
+		B305F0BE276B6675003AE510 /* nesmapper3.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E01B675EB4006841C9 /* nesmapper3.c */; };
+		B305F0BF276B6675003AE510 /* terebi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D21715F2EB00E452AC /* terebi.c */; };
+		B305F0C0276B6675003AE510 /* rom.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D45B1715F67D00E452AC /* rom.c */; };
+		B305F0C1276B6675003AE510 /* nesmapper9.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E21B675EB4006841C9 /* nesmapper9.c */; };
+		B305F0C2276B6675003AE510 /* nesmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A51715F2EB00E452AC /* nesmem.c */; };
+		B305F0C3276B6675003AE510 /* cheats.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AD1715F2EB00E452AC /* cheats.c */; };
+		B305F0C4276B6675003AE510 /* mapper-4PAA.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AF1715F2EB00E452AC /* mapper-4PAA.c */; };
+		B305F0C5276B6675003AE510 /* mapper-codemasters.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B31715F2EB00E452AC /* mapper-codemasters.c */; };
+		B305F0C6276B6675003AE510 /* mapper-janggun.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B51715F2EB00E452AC /* mapper-janggun.c */; };
+		B305F0C7276B6675003AE510 /* 93c46.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AB1715F2EB00E452AC /* 93c46.c */; };
+		B305F0C8276B6675003AE510 /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D4E51B6543D500D8D8B5 /* open_memstream.c */; };
+		B305F0C9276B6675003AE510 /* mapper-koreanmsx.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B91715F2EB00E452AC /* mapper-koreanmsx.c */; };
+		B305F0CA276B6675003AE510 /* smsmem-gg.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C71715F2EB00E452AC /* smsmem-gg.c */; };
+		B305F0CB276B6675003AE510 /* smsz80.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D01715F2EB00E452AC /* smsz80.c */; };
+		B305F0CC276B6675003AE510 /* fds_snd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4291715F33C00E452AC /* fds_snd.c */; };
+		B305F0CD276B6675003AE510 /* tms9918a.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D41715F2EB00E452AC /* tms9918a.c */; };
+		B305F0CE276B6675003AE510 /* CrabZ80.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3FC1715F31000E452AC /* CrabZ80.c */; };
+		B305F0CF276B6675003AE510 /* mmc5_snd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42B1715F33C00E452AC /* mmc5_snd.c */; };
+		B305F0D0276B6675003AE510 /* sn76489.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4331715F33C00E452AC /* sn76489.c */; };
+		B305F0D1276B6675003AE510 /* fmemopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D4E21B6543BC00D8D8B5 /* fmemopen.c */; };
+		B305F0D2276B6675003AE510 /* vrcvisnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42F1715F33C00E452AC /* vrcvisnd.c */; };
+		B305F0D3276B6675003AE510 /* nesmapper1.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A21715F2EB00E452AC /* nesmapper1.c */; };
+		B305F0D4276B6675003AE510 /* nesmapper7.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E11B675EB4006841C9 /* nesmapper7.c */; };
+		B305F0D5276B6675003AE510 /* Crab6502.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3F41715F31000E452AC /* Crab6502.c */; };
+		B305F0D6276B6675003AE510 /* CrabZ80d.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4001715F31000E452AC /* CrabZ80d.c */; };
+		B305F0D7276B6675003AE510 /* colecomem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D39B1715F2EB00E452AC /* colecomem.c */; };
+		B305F0D8276B6675003AE510 /* mapper-93c46.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B11715F2EB00E452AC /* mapper-93c46.c */; };
+		B305F0D9276B6675003AE510 /* nesmapper2.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700DF1B675EB4006841C9 /* nesmapper2.c */; };
+		B305F0DA276B6675003AE510 /* mapper-none.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BB1715F2EB00E452AC /* mapper-none.c */; };
+		B305F0DB276B6675003AE510 /* Crab6502d.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3F81715F31000E452AC /* Crab6502d.c */; };
+		B305F0DC276B6675003AE510 /* nesppu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A81715F2EB00E452AC /* nesppu.c */; };
+		B305F0DD276B6675003AE510 /* mapper-sega.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BD1715F2EB00E452AC /* mapper-sega.c */; };
+		B305F0DE276B6675003AE510 /* mappers.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C11715F2EB00E452AC /* mappers.c */; };
+		B305F0DF276B6675003AE510 /* nesmapper0.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A11715F2EB00E452AC /* nesmapper0.c */; };
+		B305F0E0276B6675003AE510 /* nes_apu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42D1715F33C00E452AC /* nes_apu.c */; };
+		B305F0E1276B6675003AE510 /* mapper-sg1000.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BF1715F2EB00E452AC /* mapper-sg1000.c */; };
+		B305F0E2276B6675003AE510 /* smsvdp.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3CC1715F2EB00E452AC /* smsvdp.c */; };
+		B305F0E3276B6675003AE510 /* nesmapper66.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E31B675EB4006841C9 /* nesmapper66.c */; };
+		B305F0E4276B6675003AE510 /* nesapu-nosefart.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4311715F33C00E452AC /* nesapu-nosefart.c */; };
+		B305F0E5276B6675003AE510 /* mapper-korean.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B71715F2EB00E452AC /* mapper-korean.c */; };
+		B305F0EE276B6697003AE510 /* PVCrabEmu.h in Headers */ = {isa = PBXBuildFile; fileRef = B305F0ED276B6697003AE510 /* PVCrabEmu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B305F0F2276B66AB003AE510 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B46D09C14293CAD0025EF88 /* libz.tbd */; };
+		B305F0F4276B66BC003AE510 /* SMSGameCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C66DFC180F51D82F0080AA28 /* SMSGameCore.m */; };
+		B305F0F5276B6782003AE510 /* libcrabemu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B305F0AF276B665E003AE510 /* libcrabemu.a */; };
+		B305F0F9276B6789003AE510 /* PVSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B305F0F8276B6789003AE510 /* PVSupport.framework */; };
+		B305F0FC276B6790003AE510 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089C1672FE841209C02AAC07 /* Foundation.framework */; };
+		B305F0FE276B6B3C003AE510 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B305F0FD276B6B31003AE510 /* libbz2.tbd */; };
+		B305F100276B6B74003AE510 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F0FF276B6B73003AE510 /* unzip.c */; };
+		B305F102276B6BA2003AE510 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F101276B6BA2003AE510 /* ioapi.c */; };
+		B305F10A276B6C7C003AE510 /* Core.plist in Resources */ = {isa = PBXBuildFile; fileRef = B305F109276B6C7B003AE510 /* Core.plist */; };
+		B305F10D276B713B003AE510 /* Crab6502.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3F41715F31000E452AC /* Crab6502.c */; };
+		B305F10E276B713B003AE510 /* rom.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D45B1715F67D00E452AC /* rom.c */; };
+		B305F10F276B713B003AE510 /* nesppu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A81715F2EB00E452AC /* nesppu.c */; };
+		B305F110276B713B003AE510 /* CrabZ80d.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4001715F31000E452AC /* CrabZ80d.c */; };
+		B305F111276B713B003AE510 /* mmc5_snd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42B1715F33C00E452AC /* mmc5_snd.c */; };
+		B305F112276B713B003AE510 /* vrcvisnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42F1715F33C00E452AC /* vrcvisnd.c */; };
+		B305F113276B713B003AE510 /* Crab6502d.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3F81715F31000E452AC /* Crab6502d.c */; };
+		B305F114276B713B003AE510 /* 93c46.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AB1715F2EB00E452AC /* 93c46.c */; };
+		B305F115276B713B003AE510 /* nesmapper7.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E11B675EB4006841C9 /* nesmapper7.c */; };
+		B305F116276B713B003AE510 /* mapper-codemasters.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B31715F2EB00E452AC /* mapper-codemasters.c */; };
+		B305F117276B713B003AE510 /* mapper-koreanmsx.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B91715F2EB00E452AC /* mapper-koreanmsx.c */; };
+		B305F118276B713B003AE510 /* mapper-sg1000.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BF1715F2EB00E452AC /* mapper-sg1000.c */; };
+		B305F119276B713B003AE510 /* nesmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A51715F2EB00E452AC /* nesmem.c */; };
+		B305F11A276B713B003AE510 /* nesmapper2.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700DF1B675EB4006841C9 /* nesmapper2.c */; };
+		B305F11B276B713B003AE510 /* tms9918a.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D41715F2EB00E452AC /* tms9918a.c */; };
+		B305F11C276B713B003AE510 /* nesmapper9.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E21B675EB4006841C9 /* nesmapper9.c */; };
+		B305F11D276B713B003AE510 /* nesmapper1.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A21715F2EB00E452AC /* nesmapper1.c */; };
+		B305F11E276B713B003AE510 /* smsmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C91715F2EB00E452AC /* smsmem.c */; };
+		B305F11F276B713B003AE510 /* mapper-korean.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B71715F2EB00E452AC /* mapper-korean.c */; };
+		B305F120276B713B003AE510 /* ym2413.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4361715F33C00E452AC /* ym2413.c */; };
+		B305F121276B713B003AE510 /* colecovision.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D39D1715F2EB00E452AC /* colecovision.c */; };
+		B305F122276B713B003AE510 /* colecomem.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D39B1715F2EB00E452AC /* colecomem.c */; };
+		B305F123276B713B003AE510 /* nesmapper66.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E31B675EB4006841C9 /* nesmapper66.c */; };
+		B305F124276B713B003AE510 /* mapper-93c46.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B11715F2EB00E452AC /* mapper-93c46.c */; };
+		B305F125276B713B003AE510 /* nes_apu.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D42D1715F33C00E452AC /* nes_apu.c */; };
+		B305F126276B713B003AE510 /* smsmem-gg.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C71715F2EB00E452AC /* smsmem-gg.c */; };
+		B305F127276B713B003AE510 /* smsz80.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D01715F2EB00E452AC /* smsz80.c */; };
+		B305F128276B713B003AE510 /* sdscterminal.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C31715F2EB00E452AC /* sdscterminal.c */; };
+		B305F129276B713B003AE510 /* nesmapper0.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A11715F2EB00E452AC /* nesmapper0.c */; };
+		B305F12A276B713B003AE510 /* terebi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D21715F2EB00E452AC /* terebi.c */; };
+		B305F12B276B713B003AE510 /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D4E51B6543D500D8D8B5 /* open_memstream.c */; };
+		B305F12C276B713B003AE510 /* smsvdp.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3CC1715F2EB00E452AC /* smsvdp.c */; };
+		B305F12D276B713B003AE510 /* mapper-none.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BB1715F2EB00E452AC /* mapper-none.c */; };
+		B305F12E276B713B003AE510 /* fmemopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D4E21B6543BC00D8D8B5 /* fmemopen.c */; };
+		B305F12F276B713B003AE510 /* nesapu-nosefart.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4311715F33C00E452AC /* nesapu-nosefart.c */; };
+		B305F130276B713B003AE510 /* mapper-sega.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3BD1715F2EB00E452AC /* mapper-sega.c */; };
+		B305F131276B713B003AE510 /* nesmapper3.c in Sources */ = {isa = PBXBuildFile; fileRef = 878700E01B675EB4006841C9 /* nesmapper3.c */; };
+		B305F132276B713B003AE510 /* mappers.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C11715F2EB00E452AC /* mappers.c */; };
+		B305F133276B713B003AE510 /* fds_snd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4291715F33C00E452AC /* fds_snd.c */; };
+		B305F134276B713B003AE510 /* CrabZ80.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3FC1715F31000E452AC /* CrabZ80.c */; };
+		B305F135276B713B003AE510 /* mapper-janggun.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B51715F2EB00E452AC /* mapper-janggun.c */; };
+		B305F136276B713B003AE510 /* cheats.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AD1715F2EB00E452AC /* cheats.c */; };
+		B305F137276B713B003AE510 /* nes.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3A31715F2EB00E452AC /* nes.c */; };
+		B305F138276B713B003AE510 /* mapper-4PAA.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AF1715F2EB00E452AC /* mapper-4PAA.c */; };
+		B305F139276B713B003AE510 /* sms.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C51715F2EB00E452AC /* sms.c */; };
+		B305F13A276B713B003AE510 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F0FF276B6B73003AE510 /* unzip.c */; };
+		B305F13B276B713B003AE510 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F101276B6BA2003AE510 /* ioapi.c */; };
+		B305F13C276B713B003AE510 /* sn76489.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4331715F33C00E452AC /* sn76489.c */; };
+		B305F147276B714B003AE510 /* PVCrabEmu.h in Headers */ = {isa = PBXBuildFile; fileRef = B305F0ED276B6697003AE510 /* PVCrabEmu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B305F149276B714B003AE510 /* SMSGameCore.m in Sources */ = {isa = PBXBuildFile; fileRef = C66DFC180F51D82F0080AA28 /* SMSGameCore.m */; };
+		B305F14C276B714B003AE510 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B305F0FD276B6B31003AE510 /* libbz2.tbd */; };
+		B305F14D276B714B003AE510 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B46D09C14293CAD0025EF88 /* libz.tbd */; };
+		B305F14F276B714B003AE510 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089C1672FE841209C02AAC07 /* Foundation.framework */; };
+		B305F151276B714B003AE510 /* Core.plist in Resources */ = {isa = PBXBuildFile; fileRef = B305F109276B6C7B003AE510 /* Core.plist */; };
+		B305F159276B7167003AE510 /* PVSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B305F158276B7167003AE510 /* PVSupport.framework */; };
+		B305F15C276B716E003AE510 /* libcrabemu-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B305F142276B713B003AE510 /* libcrabemu-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		82CAFB640FEDA62A00CCDC7E /* PBXContainerItemProxy */ = {
+		B305F0F6276B6782003AE510 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
-			remoteInfo = CrabEmu;
+			remoteGlobalIDString = B305F0AE276B665E003AE510;
+			remoteInfo = crabemu;
 		};
-		82D815600F1D879200EF8CF5 /* PBXContainerItemProxy */ = {
+		B305F15D276B716E003AE510 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
-			remoteInfo = CrabEmu;
+			remoteGlobalIDString = B305F10B276B713B003AE510;
+			remoteInfo = "crabemu-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		82CAFB820FEDA6AC00CCDC7E /* CopyFiles */ = {
+		B305F0AD276B665E003AE510 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "";
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F13E276B713B003AE510 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
 			);
@@ -144,7 +185,6 @@
 		87ACB6E41D26C1F600138B7E /* CrabZ80_gbmacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrabZ80_gbmacros.h; sourceTree = "<group>"; };
 		87ACB6E51D26C1F600138B7E /* CrabZ80gbops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrabZ80gbops.h; sourceTree = "<group>"; };
 		87ACB6E61D26C1F700138B7E /* CrabZ80gbopsCB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrabZ80gbopsCB.h; sourceTree = "<group>"; };
-		8D5B49B6048680CD000E48DA /* CrabEmu.oecoreplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrabEmu.oecoreplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9443D39B1715F2EB00E452AC /* colecomem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = colecomem.c; sourceTree = "<group>"; };
 		9443D39C1715F2EB00E452AC /* colecomem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colecomem.h; sourceTree = "<group>"; };
@@ -249,6 +289,17 @@
 		9443D4371715F33C00E452AC /* ym2413.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ym2413.h; sourceTree = "<group>"; };
 		9443D45B1715F67D00E452AC /* rom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rom.c; sourceTree = "<group>"; };
 		9443D45C1715F67D00E452AC /* rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rom.h; sourceTree = "<group>"; };
+		B305F0AF276B665E003AE510 /* libcrabemu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrabemu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B305F0EB276B6696003AE510 /* PVCrabEmu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PVCrabEmu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B305F0ED276B6697003AE510 /* PVCrabEmu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PVCrabEmu.h; sourceTree = "<group>"; };
+		B305F0F8276B6789003AE510 /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B305F0FD276B6B31003AE510 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libbz2.tbd; sourceTree = DEVELOPER_DIR; };
+		B305F0FF276B6B73003AE510 /* unzip.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = utils/minizip/unzip.c; sourceTree = "<group>"; };
+		B305F101276B6BA2003AE510 /* ioapi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = utils/minizip/ioapi.c; sourceTree = "<group>"; };
+		B305F109276B6C7B003AE510 /* Core.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Core.plist; sourceTree = "<group>"; };
+		B305F142276B713B003AE510 /* libcrabemu-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcrabemu-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B305F157276B714B003AE510 /* PVCrabEmu-tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "PVCrabEmu-tvOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B305F158276B7167003AE510 /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5DA7D8C0F5B28940008F047 /* CrabEmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrabEmu.h; sourceTree = "<group>"; };
 		C66DFC180F51D82F0080AA28 /* SMSGameCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSGameCore.m; sourceTree = "<group>"; };
 		C66DFC190F51D82F0080AA28 /* SMSGameCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSGameCore.h; sourceTree = "<group>"; };
@@ -257,13 +308,41 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8D5B49B3048680CD000E48DA /* Frameworks */ = {
+		B305F0AC276B665E003AE510 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6D120E91711302600E868A8 /* OpenEmuBase.framework in Frameworks */,
-				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
-				1B46D09D14293CAD0025EF88 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F0E8276B6696003AE510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F0F9276B6789003AE510 /* PVSupport.framework in Frameworks */,
+				B305F0FE276B6B3C003AE510 /* libbz2.tbd in Frameworks */,
+				B305F0F2276B66AB003AE510 /* libz.tbd in Frameworks */,
+				B305F0F5276B6782003AE510 /* libcrabemu.a in Frameworks */,
+				B305F0FC276B6790003AE510 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F13D276B713B003AE510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F14A276B714B003AE510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F14C276B714B003AE510 /* libbz2.tbd in Frameworks */,
+				B305F15C276B716E003AE510 /* libcrabemu-tvOS.a in Frameworks */,
+				B305F14D276B714B003AE510 /* libz.tbd in Frameworks */,
+				B305F159276B7167003AE510 /* PVSupport.framework in Frameworks */,
+				B305F14F276B714B003AE510 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +352,12 @@
 		089C166AFE841209C02AAC07 /* CrabEmu */ = {
 			isa = PBXGroup;
 			children = (
+				B305F101276B6BA2003AE510 /* ioapi.c */,
+				B305F0FF276B6B73003AE510 /* unzip.c */,
 				08FB77AFFE84173DC02AAC07 /* Classes */,
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
+				B305F0EC276B6697003AE510 /* PVCrabEmu */,
 				089C1671FE841209C02AAC07 /* Frameworks */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
@@ -286,6 +368,9 @@
 		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B305F158276B7167003AE510 /* PVSupport.framework */,
+				B305F0FD276B6B31003AE510 /* libbz2.tbd */,
+				B305F0F8276B6789003AE510 /* PVSupport.framework */,
 				C6D120E71711302600E868A8 /* OpenEmuBase.framework */,
 				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
 				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
@@ -296,6 +381,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B305F109276B6C7B003AE510 /* Core.plist */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 				3720DB4C0F19510D00744A9A /* CrabEmu.icns */,
@@ -334,7 +420,10 @@
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D5B49B6048680CD000E48DA /* CrabEmu.oecoreplugin */,
+				B305F0AF276B665E003AE510 /* libcrabemu.a */,
+				B305F0EB276B6696003AE510 /* PVCrabEmu.framework */,
+				B305F142276B713B003AE510 /* libcrabemu-tvOS.a */,
+				B305F157276B714B003AE510 /* PVCrabEmu-tvOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -552,6 +641,14 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
+		B305F0EC276B6697003AE510 /* PVCrabEmu */ = {
+			isa = PBXGroup;
+			children = (
+				B305F0ED276B6697003AE510 /* PVCrabEmu.h */,
+			);
+			path = PVCrabEmu;
+			sourceTree = "<group>";
+		};
 		B50C176B0E936FD500A8FA7E /* consoles */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,24 +688,97 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		B305F0E6276B6696003AE510 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F0EE276B6697003AE510 /* PVCrabEmu.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F146276B714B003AE510 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F147276B714B003AE510 /* PVCrabEmu.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		8D5B49AC048680CD000E48DA /* CrabEmu */ = {
+		B305F0AE276B665E003AE510 /* crabemu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "CrabEmu" */;
+			buildConfigurationList = B305F0B7276B665F003AE510 /* Build configuration list for PBXNativeTarget "crabemu" */;
 			buildPhases = (
-				8D5B49AF048680CD000E48DA /* Resources */,
-				8D5B49B1048680CD000E48DA /* Sources */,
-				8D5B49B3048680CD000E48DA /* Frameworks */,
+				B305F0AB276B665E003AE510 /* Sources */,
+				B305F0AC276B665E003AE510 /* Frameworks */,
+				B305F0AD276B665E003AE510 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CrabEmu;
-			productInstallPath = "$(HOME)/Library/Bundles";
-			productName = CrabEmu;
-			productReference = 8D5B49B6048680CD000E48DA /* CrabEmu.oecoreplugin */;
-			productType = "com.apple.product-type.bundle";
+			name = crabemu;
+			productName = crabemu;
+			productReference = B305F0AF276B665E003AE510 /* libcrabemu.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B305F0EA276B6696003AE510 /* PVCrabEmu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B305F0EF276B6697003AE510 /* Build configuration list for PBXNativeTarget "PVCrabEmu" */;
+			buildPhases = (
+				B305F0E6276B6696003AE510 /* Headers */,
+				B305F0E7276B6696003AE510 /* Sources */,
+				B305F0E8276B6696003AE510 /* Frameworks */,
+				B305F0E9276B6696003AE510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B305F0F7276B6782003AE510 /* PBXTargetDependency */,
+			);
+			name = PVCrabEmu;
+			productName = PVCrabEmu;
+			productReference = B305F0EB276B6696003AE510 /* PVCrabEmu.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B305F10B276B713B003AE510 /* crabemu-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B305F13F276B713B003AE510 /* Build configuration list for PBXNativeTarget "crabemu-tvOS" */;
+			buildPhases = (
+				B305F10C276B713B003AE510 /* Sources */,
+				B305F13D276B713B003AE510 /* Frameworks */,
+				B305F13E276B713B003AE510 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "crabemu-tvOS";
+			productName = crabemu;
+			productReference = B305F142276B713B003AE510 /* libcrabemu-tvOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B305F143276B714B003AE510 /* PVCrabEmu-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B305F154276B714B003AE510 /* Build configuration list for PBXNativeTarget "PVCrabEmu-tvOS" */;
+			buildPhases = (
+				B305F146276B714B003AE510 /* Headers */,
+				B305F148276B714B003AE510 /* Sources */,
+				B305F14A276B714B003AE510 /* Frameworks */,
+				B305F150276B714B003AE510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B305F15E276B716E003AE510 /* PBXTargetDependency */,
+			);
+			name = "PVCrabEmu-tvOS";
+			productName = PVCrabEmu;
+			productReference = B305F157276B714B003AE510 /* PVCrabEmu-tvOS.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -617,6 +787,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					B305F0AE276B665E003AE510 = {
+						CreatedOnToolsVersion = 13.2;
+						DevelopmentTeam = S32Z3HMYVQ;
+						ProvisioningStyle = Automatic;
+					};
+					B305F0EA276B6696003AE510 = {
+						CreatedOnToolsVersion = 13.2;
+						DevelopmentTeam = S32Z3HMYVQ;
+						ProvisioningStyle = Automatic;
+					};
+					B305F10B276B713B003AE510 = {
+						DevelopmentTeam = S32Z3HMYVQ;
+						ProvisioningStyle = Automatic;
+					};
+					B305F143276B714B003AE510 = {
+						DevelopmentTeam = S32Z3HMYVQ;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "CrabEmu" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -629,122 +819,172 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D5B49AC048680CD000E48DA /* CrabEmu */,
-				82D8155D0F1D878700EF8CF5 /* Build & Install CrabEmu */,
-				82CAFB610FEDA62500CCDC7E /* Distribution */,
+				B305F0EA276B6696003AE510 /* PVCrabEmu */,
+				B305F143276B714B003AE510 /* PVCrabEmu-tvOS */,
+				B305F0AE276B665E003AE510 /* crabemu */,
+				B305F10B276B713B003AE510 /* crabemu-tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8D5B49AF048680CD000E48DA /* Resources */ = {
+		B305F0E9276B6696003AE510 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
-				3720DB4D0F19510D00744A9A /* CrabEmu.icns in Resources */,
+				B305F10A276B6C7C003AE510 /* Core.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F150276B714B003AE510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F151276B714B003AE510 /* Core.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		82CAFB600FEDA62500CCDC7E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = /usr/bin/openemu_rb_automation.rb;
-			showEnvVarsInLog = 0;
-		};
-		82D8155C0F1D878700EF8CF5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"$USER_LIBRARY_DIR/Application Support/OpenEmu/Cores\"\nrm -rf \"$USER_LIBRARY_DIR/Application Support/OpenEmu/Cores/$PROJECT_NAME.oecoreplugin\"{,.dSYM}\ncp -rf \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.oecoreplugin\"{,.dSYM} \"$USER_LIBRARY_DIR/Application Support/OpenEmu/Cores/\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		8D5B49B1048680CD000E48DA /* Sources */ = {
+		B305F0AB276B665E003AE510 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				834A0CAC1B79371A0073803A /* nesmapper2.c in Sources */,
-				834A0CAD1B79371A0073803A /* nesmapper3.c in Sources */,
-				834A0CAE1B79371A0073803A /* nesmapper7.c in Sources */,
-				834A0CAF1B79371A0073803A /* nesmapper9.c in Sources */,
-				834A0CB01B79371A0073803A /* nesmapper66.c in Sources */,
-				C66DFC1A0F51D82F0080AA28 /* SMSGameCore.m in Sources */,
-				9443D4411715F42200E452AC /* CrabZ80.c in Sources */,
-				9443D4421715F42500E452AC /* CrabZ80d.c in Sources */,
-				9443D4431715F44E00E452AC /* 93c46.c in Sources */,
-				9443D4441715F45C00E452AC /* mappers.c in Sources */,
-				9443D4451715F46100E452AC /* sms.c in Sources */,
-				27E3D4E71B6543D500D8D8B5 /* open_memstream.c in Sources */,
-				9443D4461715F46900E452AC /* smsmem.c in Sources */,
-				9443D4471715F47A00E452AC /* terebi.c in Sources */,
-				27E3D4E41B6543BC00D8D8B5 /* fmemopen.c in Sources */,
-				9443D4481715F48300E452AC /* tms9918a.c in Sources */,
-				9443D4491715F4AC00E452AC /* sn76489.c in Sources */,
-				9443D44A1715F4F100E452AC /* smsmem-gg.c in Sources */,
-				9443D44B1715F50400E452AC /* mapper-93c46.c in Sources */,
-				9443D44C1715F50D00E452AC /* mapper-korean.c in Sources */,
-				9443D44D1715F51000E452AC /* mapper-codemasters.c in Sources */,
-				9443D44E1715F51400E452AC /* mapper-sega.c in Sources */,
-				9443D44F1715F51C00E452AC /* mapper-sg1000.c in Sources */,
-				9443D4501715F54100E452AC /* cheats.c in Sources */,
-				9443D4511715F55800E452AC /* sdscterminal.c in Sources */,
-				9443D4521715F5AA00E452AC /* smsvdp.c in Sources */,
-				9443D4531715F5B400E452AC /* smsz80.c in Sources */,
-				9443D4541715F5CF00E452AC /* ym2413.c in Sources */,
-				9443D4551715F5DD00E452AC /* mapper-koreanmsx.c in Sources */,
-				9443D4561715F5E700E452AC /* mapper-4PAA.c in Sources */,
-				9443D4581715F5FC00E452AC /* colecovision.c in Sources */,
-				9443D4571715F5F800E452AC /* colecomem.c in Sources */,
-				9443D4591715F61000E452AC /* mapper-none.c in Sources */,
-				9443D45A1715F61A00E452AC /* mapper-janggun.c in Sources */,
-				9443D45D1715F67D00E452AC /* rom.c in Sources */,
-				9443D45E1715F6BD00E452AC /* Crab6502.c in Sources */,
-				9443D4611715F6FA00E452AC /* nesmem.c in Sources */,
-				9443D4621715F70800E452AC /* nes.c in Sources */,
-				9443D45F1715F6CA00E452AC /* Crab6502d.c in Sources */,
-				9443D4631715F71600E452AC /* nesppu.c in Sources */,
-				9443D4641715F71F00E452AC /* nesmapper0.c in Sources */,
-				9443D4651715F72700E452AC /* nesmapper1.c in Sources */,
-				9443D4661715F73300E452AC /* fds_snd.c in Sources */,
-				9443D4671715F74100E452AC /* mmc5_snd.c in Sources */,
-				9443D4681715F74F00E452AC /* nes_apu.c in Sources */,
-				9443D4691715F75700E452AC /* vrcvisnd.c in Sources */,
-				9443D4601715F6EB00E452AC /* nesapu-nosefart.c in Sources */,
+				B305F0D5276B6675003AE510 /* Crab6502.c in Sources */,
+				B305F0C0276B6675003AE510 /* rom.c in Sources */,
+				B305F0DC276B6675003AE510 /* nesppu.c in Sources */,
+				B305F0D6276B6675003AE510 /* CrabZ80d.c in Sources */,
+				B305F0CF276B6675003AE510 /* mmc5_snd.c in Sources */,
+				B305F0D2276B6675003AE510 /* vrcvisnd.c in Sources */,
+				B305F0DB276B6675003AE510 /* Crab6502d.c in Sources */,
+				B305F0C7276B6675003AE510 /* 93c46.c in Sources */,
+				B305F0D4276B6675003AE510 /* nesmapper7.c in Sources */,
+				B305F0C5276B6675003AE510 /* mapper-codemasters.c in Sources */,
+				B305F0C9276B6675003AE510 /* mapper-koreanmsx.c in Sources */,
+				B305F0E1276B6675003AE510 /* mapper-sg1000.c in Sources */,
+				B305F0C2276B6675003AE510 /* nesmem.c in Sources */,
+				B305F0D9276B6675003AE510 /* nesmapper2.c in Sources */,
+				B305F0CD276B6675003AE510 /* tms9918a.c in Sources */,
+				B305F0C1276B6675003AE510 /* nesmapper9.c in Sources */,
+				B305F0D3276B6675003AE510 /* nesmapper1.c in Sources */,
+				B305F0BA276B6675003AE510 /* smsmem.c in Sources */,
+				B305F0E5276B6675003AE510 /* mapper-korean.c in Sources */,
+				B305F0BB276B6675003AE510 /* ym2413.c in Sources */,
+				B305F0BD276B6675003AE510 /* colecovision.c in Sources */,
+				B305F0D7276B6675003AE510 /* colecomem.c in Sources */,
+				B305F0E3276B6675003AE510 /* nesmapper66.c in Sources */,
+				B305F0D8276B6675003AE510 /* mapper-93c46.c in Sources */,
+				B305F0E0276B6675003AE510 /* nes_apu.c in Sources */,
+				B305F0CA276B6675003AE510 /* smsmem-gg.c in Sources */,
+				B305F0CB276B6675003AE510 /* smsz80.c in Sources */,
+				B305F0B9276B6675003AE510 /* sdscterminal.c in Sources */,
+				B305F0DF276B6675003AE510 /* nesmapper0.c in Sources */,
+				B305F0BF276B6675003AE510 /* terebi.c in Sources */,
+				B305F0C8276B6675003AE510 /* open_memstream.c in Sources */,
+				B305F0E2276B6675003AE510 /* smsvdp.c in Sources */,
+				B305F0DA276B6675003AE510 /* mapper-none.c in Sources */,
+				B305F0D1276B6675003AE510 /* fmemopen.c in Sources */,
+				B305F0E4276B6675003AE510 /* nesapu-nosefart.c in Sources */,
+				B305F0DD276B6675003AE510 /* mapper-sega.c in Sources */,
+				B305F0BE276B6675003AE510 /* nesmapper3.c in Sources */,
+				B305F0DE276B6675003AE510 /* mappers.c in Sources */,
+				B305F0CC276B6675003AE510 /* fds_snd.c in Sources */,
+				B305F0CE276B6675003AE510 /* CrabZ80.c in Sources */,
+				B305F0C6276B6675003AE510 /* mapper-janggun.c in Sources */,
+				B305F0C3276B6675003AE510 /* cheats.c in Sources */,
+				B305F0B8276B6675003AE510 /* nes.c in Sources */,
+				B305F0C4276B6675003AE510 /* mapper-4PAA.c in Sources */,
+				B305F0BC276B6675003AE510 /* sms.c in Sources */,
+				B305F100276B6B74003AE510 /* unzip.c in Sources */,
+				B305F102276B6BA2003AE510 /* ioapi.c in Sources */,
+				B305F0D0276B6675003AE510 /* sn76489.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F0E7276B6696003AE510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F0F4276B66BC003AE510 /* SMSGameCore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F10C276B713B003AE510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F10D276B713B003AE510 /* Crab6502.c in Sources */,
+				B305F10E276B713B003AE510 /* rom.c in Sources */,
+				B305F10F276B713B003AE510 /* nesppu.c in Sources */,
+				B305F110276B713B003AE510 /* CrabZ80d.c in Sources */,
+				B305F111276B713B003AE510 /* mmc5_snd.c in Sources */,
+				B305F112276B713B003AE510 /* vrcvisnd.c in Sources */,
+				B305F113276B713B003AE510 /* Crab6502d.c in Sources */,
+				B305F114276B713B003AE510 /* 93c46.c in Sources */,
+				B305F115276B713B003AE510 /* nesmapper7.c in Sources */,
+				B305F116276B713B003AE510 /* mapper-codemasters.c in Sources */,
+				B305F117276B713B003AE510 /* mapper-koreanmsx.c in Sources */,
+				B305F118276B713B003AE510 /* mapper-sg1000.c in Sources */,
+				B305F119276B713B003AE510 /* nesmem.c in Sources */,
+				B305F11A276B713B003AE510 /* nesmapper2.c in Sources */,
+				B305F11B276B713B003AE510 /* tms9918a.c in Sources */,
+				B305F11C276B713B003AE510 /* nesmapper9.c in Sources */,
+				B305F11D276B713B003AE510 /* nesmapper1.c in Sources */,
+				B305F11E276B713B003AE510 /* smsmem.c in Sources */,
+				B305F11F276B713B003AE510 /* mapper-korean.c in Sources */,
+				B305F120276B713B003AE510 /* ym2413.c in Sources */,
+				B305F121276B713B003AE510 /* colecovision.c in Sources */,
+				B305F122276B713B003AE510 /* colecomem.c in Sources */,
+				B305F123276B713B003AE510 /* nesmapper66.c in Sources */,
+				B305F124276B713B003AE510 /* mapper-93c46.c in Sources */,
+				B305F125276B713B003AE510 /* nes_apu.c in Sources */,
+				B305F126276B713B003AE510 /* smsmem-gg.c in Sources */,
+				B305F127276B713B003AE510 /* smsz80.c in Sources */,
+				B305F128276B713B003AE510 /* sdscterminal.c in Sources */,
+				B305F129276B713B003AE510 /* nesmapper0.c in Sources */,
+				B305F12A276B713B003AE510 /* terebi.c in Sources */,
+				B305F12B276B713B003AE510 /* open_memstream.c in Sources */,
+				B305F12C276B713B003AE510 /* smsvdp.c in Sources */,
+				B305F12D276B713B003AE510 /* mapper-none.c in Sources */,
+				B305F12E276B713B003AE510 /* fmemopen.c in Sources */,
+				B305F12F276B713B003AE510 /* nesapu-nosefart.c in Sources */,
+				B305F130276B713B003AE510 /* mapper-sega.c in Sources */,
+				B305F131276B713B003AE510 /* nesmapper3.c in Sources */,
+				B305F132276B713B003AE510 /* mappers.c in Sources */,
+				B305F133276B713B003AE510 /* fds_snd.c in Sources */,
+				B305F134276B713B003AE510 /* CrabZ80.c in Sources */,
+				B305F135276B713B003AE510 /* mapper-janggun.c in Sources */,
+				B305F136276B713B003AE510 /* cheats.c in Sources */,
+				B305F137276B713B003AE510 /* nes.c in Sources */,
+				B305F138276B713B003AE510 /* mapper-4PAA.c in Sources */,
+				B305F139276B713B003AE510 /* sms.c in Sources */,
+				B305F13A276B713B003AE510 /* unzip.c in Sources */,
+				B305F13B276B713B003AE510 /* ioapi.c in Sources */,
+				B305F13C276B713B003AE510 /* sn76489.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B305F148276B714B003AE510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B305F149276B714B003AE510 /* SMSGameCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		82CAFB650FEDA62A00CCDC7E /* PBXTargetDependency */ = {
+		B305F0F7276B6782003AE510 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8D5B49AC048680CD000E48DA /* CrabEmu */;
-			targetProxy = 82CAFB640FEDA62A00CCDC7E /* PBXContainerItemProxy */;
+			target = B305F0AE276B665E003AE510 /* crabemu */;
+			targetProxy = B305F0F6276B6782003AE510 /* PBXContainerItemProxy */;
 		};
-		82D815610F1D879200EF8CF5 /* PBXTargetDependency */ = {
+		B305F15E276B716E003AE510 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8D5B49AC048680CD000E48DA /* CrabEmu */;
-			targetProxy = 82D815600F1D879200EF8CF5 /* PBXContainerItemProxy */;
+			target = B305F10B276B713B003AE510 /* crabemu-tvOS */;
+			targetProxy = B305F15D276B716E003AE510 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -760,48 +1000,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB913B08733D840010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
-				OTHER_CFLAGS = (
-					"-DCRABZ80_NO_READMAP_FALLBACK",
-					"-DIN_CRABEMU",
-					"-DNO_ZLIB",
-					"-DNO_BZ2",
-					"-DCRABEMU_32BIT_COLOR",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.openemu.${PRODUCT_NAME:identifier}";
-				PRODUCT_NAME = CrabEmu;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = oecoreplugin;
-			};
-			name = Debug;
-		};
-		1DEB913C08733D840010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
-				OTHER_CFLAGS = (
-					"-DCRABZ80_NO_READMAP_FALLBACK",
-					"-DIN_CRABEMU",
-					"-DNO_ZLIB",
-					"-DNO_BZ2",
-					"-DCRABEMU_32BIT_COLOR",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.openemu.${PRODUCT_NAME:identifier}";
-				PRODUCT_NAME = CrabEmu;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = oecoreplugin;
-			};
-			name = Release;
-		};
 		1DEB913F08733D840010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -817,6 +1015,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -830,7 +1029,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/utils/minizip\"",
+					"\"$(SRCROOT)/utils/scale2x\"",
+					"\"$(SRCROOT)/utils\"",
+				);
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				"MACOSX_DEPLOYMENT_TARGET[arch=arm64]" = 11.0;
@@ -839,7 +1042,7 @@
 					"-DCRABZ80_NO_READMAP_FALLBACK",
 					"-DIN_CRABEMU",
 				);
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -858,6 +1061,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -871,7 +1075,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/utils/minizip\"",
+					"\"$(SRCROOT)/utils/scale2x\"",
+					"\"$(SRCROOT)/utils\"",
+				);
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				"MACOSX_DEPLOYMENT_TARGET[arch=arm64]" = 11.0;
@@ -879,62 +1087,429 @@
 					"-DCRABZ80_NO_READMAP_FALLBACK",
 					"-DIN_CRABEMU",
 				);
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
-		82CAFB620FEDA62500CCDC7E /* Debug */ = {
+		B305F0B5276B665F003AE510 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
-				PRODUCT_NAME = Distribution;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		82CAFB630FEDA62500CCDC7E /* Release */ = {
+		B305F0B6276B665F003AE510 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
-				PRODUCT_NAME = Distribution;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		82D8155E0F1D878800EF8CF5 /* Debug */ = {
+		B305F0F0276B6697003AE510 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
-				PRODUCT_NAME = "Build & Install";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.provenance-emu.PVCrabEmu";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		82D8155F0F1D878800EF8CF5 /* Release */ = {
+		B305F0F1276B6697003AE510 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				INSTALL_PATH = "\"$(USER_LIBRARY_DIR)/Application Support/OpenEmu/Cores\"";
-				PRODUCT_NAME = "Build & Install";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.provenance-emu.PVCrabEmu";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B305F140276B713B003AE510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B305F141276B713B003AE510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B305F155276B714B003AE510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.provenance-emu.PVCrabEmu";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B305F156276B714B003AE510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.provenance-emu.PVCrabEmu";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "CrabEmu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DEB913B08733D840010E9CD /* Debug */,
-				1DEB913C08733D840010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "CrabEmu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -944,20 +1519,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82CAFB710FEDA62C00CCDC7E /* Build configuration list for PBXAggregateTarget "Distribution" */ = {
+		B305F0B7276B665F003AE510 /* Build configuration list for PBXNativeTarget "crabemu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				82CAFB620FEDA62500CCDC7E /* Debug */,
-				82CAFB630FEDA62500CCDC7E /* Release */,
+				B305F0B5276B665F003AE510 /* Debug */,
+				B305F0B6276B665F003AE510 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82D815710F1D87B000EF8CF5 /* Build configuration list for PBXAggregateTarget "Build & Install CrabEmu" */ = {
+		B305F0EF276B6697003AE510 /* Build configuration list for PBXNativeTarget "PVCrabEmu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				82D8155E0F1D878800EF8CF5 /* Debug */,
-				82D8155F0F1D878800EF8CF5 /* Release */,
+				B305F0F0276B6697003AE510 /* Debug */,
+				B305F0F1276B6697003AE510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B305F13F276B713B003AE510 /* Build configuration list for PBXNativeTarget "crabemu-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B305F140276B713B003AE510 /* Debug */,
+				B305F141276B713B003AE510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B305F154276B714B003AE510 /* Build configuration list for PBXNativeTarget "PVCrabEmu-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B305F155276B714B003AE510 /* Debug */,
+				B305F156276B714B003AE510 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

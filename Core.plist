@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PVCoreIdentifier</key>
+	<string>com.provenance.core.crabemu</string>
+	<key>PVPrincipleClass</key>
+	<string>SMSGameCore</string>
+	<key>PVProjectName</key>
+	<string>CrabEMU</string>
+	<key>PVSupportedSystems</key>
+	<array>
+		<string>com.provenance.sms</string>
+		<string>com.provenance.sg1000</string>
+		<string>com.provenance.colecovision</string>
+	</array>
+	<key>PVProjectURL</key>
+	<string>http://crabemu.sourceforge.net</string>
+	<key>PVProjectVersion</key>
+	<string>0.2.0</string>
+</dict>
+</plist>
