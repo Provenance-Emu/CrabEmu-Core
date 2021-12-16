@@ -190,7 +190,7 @@ console_t *cur_console;
 
 # pragma mark - Video
 
-- (OEIntSize)bufferSize
+- (CGSize)bufferSize
 {
     uint32_t f_x, f_y;
     cur_console->frame_size(&f_x, &f_y);
@@ -204,7 +204,7 @@ console_t *cur_console;
     return CGRectMake(a_x, a_y, a_w, a_h);
 }
 
-- (OEIntSize)aspectSize
+- (CGSize)aspectSize
 {
     return CGSizeMake(cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0), cur_console->console_type == CONSOLE_GG ? 144 : 192);
 }
