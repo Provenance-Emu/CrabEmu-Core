@@ -808,7 +808,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "CrabEmu" */;
+			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "PVCrabEmu" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
@@ -1512,7 +1512,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "CrabEmu" */ = {
+		1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "PVCrabEmu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB913F08733D840010E9CD /* Debug */,
