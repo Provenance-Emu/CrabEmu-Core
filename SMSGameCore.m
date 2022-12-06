@@ -232,12 +232,15 @@ console_t *cur_console;
 
 - (GLenum)pixelType
 {
-    return GL_UNSIGNED_INT; //GL_UNSIGNED_INT_8_8_8_8_REV;
+    return GL_UNSIGNED_INT;
+//    return GL_UNSIGNED_INT_VEC4;
+//    return GL_UNSIGNED_INT_24_8;
 }
 
 - (GLenum)internalPixelFormat
 {
-    return GL_RGBA;
+    return GL_RGBA8;
+//    return GL_RGBA;
 }
 
 # pragma mark - Audio
@@ -387,11 +390,11 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
 //    sms_button_released(1, MasterSystemMap[button]);
 //}
 
-- (void)didPushMasterSystemButton:(enum PVMasterSystemButton)button forPlayer:(NSInteger)player {
+- (oneway void)didPushMasterSystemButton:(enum PVMasterSystemButton)button forPlayer:(NSInteger)player {
     sms_button_pressed(1, MasterSystemMap[button]);
 }
 
-- (void)didReleaseMasterSystemButton:(enum PVMasterSystemButton)button forPlayer:(NSInteger)player {
+- (oneway void)didReleaseMasterSystemButton:(enum PVMasterSystemButton)button forPlayer:(NSInteger)player {
     sms_button_released(1, MasterSystemMap[button]);
 }
 
@@ -426,23 +429,23 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     sms_button_released(1, SMS_CONSOLE_RESET);
 }
 
-- (oneway void)didPushSG1000Button:(PVSG1000Button)button forPlayer:(NSUInteger)player
+- (oneway void)didPushSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player
 {
     //console pause, sms_z80_nmi()
     sms_button_pressed((int)player, MasterSystemMap[button]);
 }
 
-- (oneway void)didReleaseSG1000Button:(PVSG1000Button)button forPlayer:(NSUInteger)player
+- (oneway void)didReleaseSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player
 {
     sms_button_released((int)player, MasterSystemMap[button]);
 }
 
-- (oneway void)didPushColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSUInteger)player;
+- (oneway void)didPushColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player;
 {
     coleco_button_pressed((int)player, ColecoVisionMap[button]);
 }
 
-- (oneway void)didReleaseColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSUInteger)player;
+- (oneway void)didReleaseColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player;
 {
     coleco_button_released((int)player, ColecoVisionMap[button]);
 }

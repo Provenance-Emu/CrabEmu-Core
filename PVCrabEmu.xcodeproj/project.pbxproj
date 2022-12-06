@@ -25,7 +25,6 @@
 		B305F0C7276B6675003AE510 /* 93c46.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3AB1715F2EB00E452AC /* 93c46.c */; };
 		B305F0C8276B6675003AE510 /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 27E3D4E51B6543D500D8D8B5 /* open_memstream.c */; };
 		B305F0C9276B6675003AE510 /* mapper-koreanmsx.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3B91715F2EB00E452AC /* mapper-koreanmsx.c */; };
-		B305F0CA276B6675003AE510 /* smsmem-gg.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C71715F2EB00E452AC /* smsmem-gg.c */; };
 		B305F0CB276B6675003AE510 /* smsz80.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D01715F2EB00E452AC /* smsz80.c */; };
 		B305F0CC276B6675003AE510 /* fds_snd.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D4291715F33C00E452AC /* fds_snd.c */; };
 		B305F0CD276B6675003AE510 /* tms9918a.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3D41715F2EB00E452AC /* tms9918a.c */; };
@@ -63,6 +62,7 @@
 		B305F100276B6B74003AE510 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F0FF276B6B73003AE510 /* unzip.c */; };
 		B305F102276B6BA2003AE510 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F101276B6BA2003AE510 /* ioapi.c */; };
 		B305F10A276B6C7C003AE510 /* Core.plist in Resources */ = {isa = PBXBuildFile; fileRef = B305F109276B6C7B003AE510 /* Core.plist */; };
+		B3AEE315293F41CC0050BDB6 /* smsmem-gg.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C71715F2EB00E452AC /* smsmem-gg.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +226,7 @@
 		B305F101276B6BA2003AE510 /* ioapi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = utils/minizip/ioapi.c; sourceTree = "<group>"; };
 		B305F109276B6C7B003AE510 /* Core.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Core.plist; sourceTree = "<group>"; };
 		B305F158276B7167003AE510 /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3AEE314293F412E0050BDB6 /* BuildFlags.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildFlags.xcconfig; sourceTree = "<group>"; };
 		B5DA7D8C0F5B28940008F047 /* CrabEmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrabEmu.h; sourceTree = "<group>"; };
 		C66DFC180F51D82F0080AA28 /* SMSGameCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSGameCore.m; sourceTree = "<group>"; };
 		C66DFC190F51D82F0080AA28 /* SMSGameCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSGameCore.h; sourceTree = "<group>"; };
@@ -259,6 +260,7 @@
 		089C166AFE841209C02AAC07 /* CrabEmu */ = {
 			isa = PBXGroup;
 			children = (
+				B3AEE314293F412E0050BDB6 /* BuildFlags.xcconfig */,
 				B305F101276B6BA2003AE510 /* ioapi.c */,
 				B305F0FF276B6B73003AE510 /* unzip.c */,
 				08FB77AFFE84173DC02AAC07 /* Classes */,
@@ -719,7 +721,6 @@
 				B305F0E3276B6675003AE510 /* nesmapper66.c in Sources */,
 				B305F0D8276B6675003AE510 /* mapper-93c46.c in Sources */,
 				B305F0E0276B6675003AE510 /* nes_apu.c in Sources */,
-				B305F0CA276B6675003AE510 /* smsmem-gg.c in Sources */,
 				B305F0CB276B6675003AE510 /* smsz80.c in Sources */,
 				B305F0B9276B6675003AE510 /* sdscterminal.c in Sources */,
 				B305F0DF276B6675003AE510 /* nesmapper0.c in Sources */,
@@ -736,6 +737,7 @@
 				B305F0CE276B6675003AE510 /* CrabZ80.c in Sources */,
 				B305F0C6276B6675003AE510 /* mapper-janggun.c in Sources */,
 				B305F0C3276B6675003AE510 /* cheats.c in Sources */,
+				B3AEE315293F41CC0050BDB6 /* smsmem-gg.c in Sources */,
 				B305F0B8276B6675003AE510 /* nes.c in Sources */,
 				B305F0C4276B6675003AE510 /* mapper-4PAA.c in Sources */,
 				B305F0BC276B6675003AE510 /* sms.c in Sources */,
@@ -777,6 +779,7 @@
 /* Begin XCBuildConfiguration section */
 		1DEB913F08733D840010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3AEE314293F412E0050BDB6 /* BuildFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -824,6 +827,7 @@
 		};
 		1DEB914008733D840010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3AEE314293F412E0050BDB6 /* BuildFlags.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -913,9 +917,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
 			};
 			name = Debug;
 		};
@@ -958,9 +962,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1020,10 +1024,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1078,10 +1082,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
