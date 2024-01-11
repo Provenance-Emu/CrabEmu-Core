@@ -14,5 +14,4 @@ FOUNDATION_EXPORT double PVCrabEmuVersionNumber;
 FOUNDATION_EXPORT const unsigned char PVCrabEmuVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <PVCrabEmu/PublicHeader.h>
-
-
+#import <PVCrabEmu/SMSGameCore.h>

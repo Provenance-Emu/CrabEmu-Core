@@ -83,7 +83,7 @@ console_t *cur_console;
 
 - (void)dealloc
 {
-    DLog(@"releasing/deallocating CrabEmu memory");
+    VLOG(@"releasing/deallocating CrabEmu memory");
 
     cur_console->shutdown();
 }
@@ -94,7 +94,7 @@ console_t *cur_console;
 {
     romFile = [NSURL fileURLWithPath:path];
     int console = rom_detect_console(path.fileSystemRepresentation);
-    DLog(@"Loaded File");
+    VLOG(@"Loaded File");
     //TODO: add choice NTSC/PAL
     if(console == CONSOLE_COLECOVISION)
     {

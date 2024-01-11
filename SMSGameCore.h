@@ -24,8 +24,10 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
-#import <PVSupport/PVSupport.h>
+@import Foundation;
+@import PVSupport;
+//#import <PVSupport/PVEmulatorCore.h>
+//#import <PVSupport/PVSupport-Swift.h>
 
 __attribute__((visibility("default")))
 @interface SMSGameCore : PVEmulatorCore

@@ -62,7 +62,8 @@
 		B305F102276B6BA2003AE510 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F101276B6BA2003AE510 /* ioapi.c */; };
 		B305F10A276B6C7C003AE510 /* Core.plist in Resources */ = {isa = PBXBuildFile; fileRef = B305F109276B6C7B003AE510 /* Core.plist */; };
 		B3AEE315293F41CC0050BDB6 /* smsmem-gg.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C71715F2EB00E452AC /* smsmem-gg.c */; };
-		B3DEEF882942D60E00A6957C /* PVSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DEEF872942D60E00A6957C /* PVSupport.framework */; };
+		B3B13AD52B4D1CA4006701B9 /* SMSGameCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C66DFC190F51D82F0080AA28 /* SMSGameCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3B13AD72B4D1D05006701B9 /* PVSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B13AD62B4D1D05006701B9 /* PVSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,7 @@
 		B305F109276B6C7B003AE510 /* Core.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Core.plist; sourceTree = "<group>"; };
 		B305F158276B7167003AE510 /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AEE314293F412E0050BDB6 /* BuildFlags.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildFlags.xcconfig; sourceTree = "<group>"; };
+		B3B13AD62B4D1D05006701B9 /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3DEEF832942D08900A6957C /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3DEEF872942D60E00A6957C /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5DA7D8C0F5B28940008F047 /* CrabEmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrabEmu.h; sourceTree = "<group>"; };
@@ -248,7 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3DEEF882942D60E00A6957C /* PVSupport.framework in Frameworks */,
+				B3B13AD72B4D1D05006701B9 /* PVSupport.framework in Frameworks */,
 				B305F0FE276B6B3C003AE510 /* libbz2.tbd in Frameworks */,
 				B305F0F2276B66AB003AE510 /* libz.tbd in Frameworks */,
 				B305F0F5276B6782003AE510 /* libcrabemu.a in Frameworks */,
@@ -279,6 +281,7 @@
 		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3B13AD62B4D1D05006701B9 /* PVSupport.framework */,
 				B3DEEF872942D60E00A6957C /* PVSupport.framework */,
 				B3DEEF832942D08900A6957C /* PVSupport.framework */,
 				B305F158276B7167003AE510 /* PVSupport.framework */,
@@ -605,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B305F0EE276B6697003AE510 /* PVCrabEmu.h in Headers */,
+				B3B13AD52B4D1CA4006701B9 /* SMSGameCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,8 +666,7 @@
 					};
 					B305F0EA276B6696003AE510 = {
 						CreatedOnToolsVersion = 13.2;
-						DevelopmentTeam = S32Z3HMYVQ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1005,12 +1008,12 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1034,6 +1037,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.provenance-emu.PVCrabEmu";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos appletvsimulator appletvos";
@@ -1069,11 +1073,11 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1092,6 +1096,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.provenance-emu.PVCrabEmu";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos appletvsimulator appletvos";
@@ -1179,11 +1184,11 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = S32Z3HMYVQ;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1202,6 +1207,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.provenance-emu.PVCrabEmu";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos appletvsimulator appletvos";
