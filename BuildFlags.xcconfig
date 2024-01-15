@@ -18,6 +18,7 @@ OTHER_CFLAGS[sdk=iphoneos*] = $(inherited)
 
 // Simulator
 GCC_PREPROCESSOR_DEFINITIONS[sdk=iphonesimulator*] = $(inherited) TARGET_IPHONE_SIMULATOR=1
+OTHER_CFLAGS[sdk=iphonesimulator*] = $(inherited)
 
 // tvOS Device
 GCC_PREPROCESSOR_DEFINITIONS[sdk=appletvos*] = $(inherited) TARGET_IPHONE=1
