@@ -1,0 +1,24 @@
+{
+  "originHash" : "a7e466600f8aa9b0bc5e8f0045133f3588500cff7d22689db6f0392ef482224a",
+  "pins" : [
+    {
+      "identity" : "swiftgenplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftGen/SwiftGenPlugin",
+      "state" : {
+        "revision" : "879b85a470cacd70c19e22eb7e11a3aed66f4068",
+        "version" : "6.6.2"
+      }
+    },
+    {
+      "identity" : "ziparchive",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ZipArchive/ZipArchive.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "79d4dc9729096c6ad83dd3cee2b9f354d1b4ab7b"
+      }
+    }
+  ],
+  "version" : 3
+}

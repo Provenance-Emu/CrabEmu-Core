@@ -26,6 +26,13 @@
 
 #import "SMSGameCore.h"
 
+@import PVEmulatorCore;
+@import PVLoggingObjC;
+@import PVAudio;
+//@import PVCrabEmuC;
+@import PVCrabEmuSwift;
+@import libcrabemu;
+
 #if !TARGET_OS_MACCATALYST && !TARGET_OS_OSX
 #import <OpenGLES/gltypes.h>
 #import <OpenGLES/ES3/gl.h>
@@ -54,35 +61,28 @@
 
 #define SAMPLERATE 44100
 
-@interface SMSGameCore () <PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
-{
-    NSLock        *bufLock;
-    BOOL           paused;
-    NSURL         *romFile;
-    NSMutableDictionary *cheatList;
-}
+@interface SMSGameCore (ObjC) <PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
+
 @end
 
-@implementation SMSGameCore
+@implementation SMSGameCore (ObjC)
 
 // Global variables because the callbacks need to access them...
 static OERingBuffer *ringBuffer;
 console_t *cur_console;
 
-- (id)init
-{
+- (instancetype)init {
     self = [super init];
     if(self != nil)
     {
-        bufLock = [[NSLock alloc] init];
-        cheatList = [[NSMutableDictionary alloc] init];
+        self.bufLock = [[NSLock alloc] init];
+        self.cheatList = [[NSMutableDictionary alloc] init];
         ringBuffer = [self ringBufferAtIndex:0];
     }
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     VLOG(@"releasing/deallocating CrabEmu memory");
 
     cur_console->shutdown();
@@ -90,9 +90,8 @@ console_t *cur_console;
 
 # pragma mark - Execution
 
-- (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error
-{
-    romFile = [NSURL fileURLWithPath:path];
+- (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error {
+    self.romFile = [NSURL fileURLWithPath:path];
     int console = rom_detect_console(path.fileSystemRepresentation);
     VLOG(@"Loaded File");
     //TODO: add choice NTSC/PAL
@@ -149,7 +148,7 @@ console_t *cur_console;
 
     if(cur_console->console_type != CONSOLE_COLECOVISION)
     {
-        NSString *extensionlessFilename = [[romFile lastPathComponent] stringByDeletingPathExtension];
+        NSString *extensionlessFilename = [[self.romFile lastPathComponent] stringByDeletingPathExtension];
         NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
         [[NSFileManager defaultManager] createDirectoryAtURL:batterySavesDirectory withIntermediateDirectories:YES attributes:nil error:nil];
         NSURL *saveFile = [batterySavesDirectory URLByAppendingPathComponent:[extensionlessFilename stringByAppendingPathExtension:@"sav"]];
@@ -163,9 +162,9 @@ console_t *cur_console;
 
 - (void)executeFrameSkippingFrame: (BOOL) skip
 {
-    [bufLock lock];
+    [self.bufLock lock];
     cur_console->frame(0);
-    [bufLock unlock];
+    [self.bufLock unlock];
 }
 
 - (void)executeFrame
@@ -178,11 +177,10 @@ console_t *cur_console;
     cur_console->soft_reset();
 }
 
-- (void)stopEmulation
-{
+- (void)stopEmulation {
     if(cur_console->console_type != CONSOLE_COLECOVISION)
     {
-        NSString *extensionlessFilename = [[romFile lastPathComponent] stringByDeletingPathExtension];
+        NSString *extensionlessFilename = [[self.romFile lastPathComponent] stringByDeletingPathExtension];
         NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
         NSURL *saveFile = [batterySavesDirectory URLByAppendingPathComponent:[extensionlessFilename stringByAppendingPathExtension:@"sav"]];
 
@@ -192,29 +190,23 @@ console_t *cur_console;
     [super stopEmulation];
 }
 
-- (NSTimeInterval)frameInterval
-{
-    return 60;
-}
+- (NSTimeInterval)frameInterval { return 60; }
 
 # pragma mark - Video
 
-- (CGSize)bufferSize
-{
+- (CGSize)bufferSize {
     uint32_t f_x, f_y;
     cur_console->frame_size(&f_x, &f_y);
     return CGSizeMake(f_x, f_y);
 }
 
-- (CGRect)screenRect
-{
+- (CGRect)screenRect {
     uint32_t a_x, a_y, a_w, a_h;
     cur_console->active_size(&a_x, &a_y, &a_w, &a_h);
     return CGRectMake(a_x, a_y, a_w, a_h);
 }
 
-- (CGSize)aspectSize
-{
+- (CGSize)aspectSize {
     return CGSizeMake(cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0), cur_console->console_type == CONSOLE_GG ? 144 : 192);
 }
 
@@ -231,56 +223,44 @@ console_t *cur_console;
 //    return smsvdp.framebuffer = (uint32*)hint;
 //}
 
-- (GLenum)pixelFormat
-{
+- (GLenum)pixelFormat {
     return GL_BGRA; //GL_BGRA;
 }
 
-- (GLenum)pixelType
-{
+- (GLenum)pixelType {
     return GL_UNSIGNED_INT;
 //    return GL_UNSIGNED_INT_VEC4;
 //    return GL_UNSIGNED_INT_24_8;
 }
 
-- (GLenum)internalPixelFormat
-{
+- (GLenum)internalPixelFormat {
     return GL_RGBA8;
 //    return GL_RGBA;
 }
 
 # pragma mark - Audio
 
-- (double)audioSampleRate
-{
-    return SAMPLERATE;
-}
+- (double)audioSampleRate{ return SAMPLERATE; }
 
-- (NSUInteger)channelCount
-{
-    return 2;
-}
+- (NSUInteger)channelCount { return 2; }
 
 # pragma mark - Save States
 
-- (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
-{
+- (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))__attribute__((noescape)) block {
     block(cur_console->save_state([fileName fileSystemRepresentation]) == 0, nil);
 }
 
-- (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
-{
-    if([[self systemIdentifier] isEqualToString:@"com.provenance.sg1000"])
-    {
+- (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))__attribute__((noescape)) block {
+    if([[self systemIdentifier] isEqualToString:@"com.provenance.sg1000"]) {
         cur_console->load_state([fileName fileSystemRepresentation]);
         block(YES, nil);
     }
-    else
+    else {
         block(cur_console->load_state([fileName fileSystemRepresentation]) == 0, nil);
+    }
 }
 
-- (NSData *)serializeStateWithError:(NSError **)outError
-{
+- (NSData *)serializeStateWithError:(NSError **)outError {
     void *bytes;
     size_t length;
     FILE *fp = open_memstream((char **)&bytes, &length);
@@ -308,8 +288,7 @@ console_t *cur_console;
     return nil;
 }
 
-- (BOOL)deserializeState:(NSData *)state withError:(NSError **)outError
-{
+- (BOOL)deserializeState:(NSData *)state withError:(NSError **)outError {
     const void *bytes = [state bytes];
     size_t length = [state length];
 
@@ -340,44 +319,35 @@ console_t *cur_console;
  CrabEmu callbacks
  */
 
-void sound_update_buffer(signed short *buf, int length)
-{
-    //NSLog(@"%s %p", __FUNCTION__, ringBuffer);
-    [ringBuffer write:buf maxLength:length];
+void sound_update_buffer(signed short *buf, int length) {
+    [ringBuffer writeBuffer:buf maxLength:length];
 }
 
-int sound_init(int channels, int region)
-{
+int sound_init(int channels, int region) {
     return 0;
 }
 
-void sound_shutdown(void)
-{
-
+void sound_shutdown(void) {
+    STUB(@"");
 }
 
-void sound_reset_buffer(void)
-{
-
+void sound_reset_buffer(void) {
+    STUB(@"");
 }
 
-void gui_set_viewport(int w, int h)
-{
-    //NSLog(@"viewport, width: %d, height: %d", w, h);
+void gui_set_viewport(int w, int h) {
+    DLOG(@"viewport, width: %d, height: %d", w, h);
 }
 
-void gui_set_aspect(float x, float y)
-{
-    //NSLog(@"set_aspect, x: %f, y: %f", x, y);
+void gui_set_aspect(float x, float y) {
+    DLOG(@"set_aspect, x: %f, y: %f", x, y);
 }
 
-void gui_set_title(const char *str)
-{
-    //NSLog(@"set_title%s", str);
+void gui_set_title(const char *str) {
+    DLOG(@"set_title: %s", str);
 }
 
-void gui_set_console(console_t *c)
-{
+void gui_set_console(console_t *c) {
     cur_console = c;
 }
 
@@ -404,7 +374,6 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     sms_button_released(1, MasterSystemMap[button]);
 }
 
-
 //- (oneway void)didPushSMSButton:(PVSMSButton)button forPlayer:(NSUInteger)player;
 //{
 //    sms_button_pressed((int)player, MasterSystemMap[button]);
@@ -415,51 +384,42 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
 //    sms_button_released((int)player, MasterSystemMap[button]);
 //}
 
-- (oneway void)didPushSMSStartButton;
-{
+- (oneway void)didPushSMSStartButton; {
     sms_button_pressed(1, GAMEGEAR_START);
 }
 
-- (oneway void)didReleaseSMSStartButton;
-{
+- (oneway void)didReleaseSMSStartButton; {
     sms_button_released(1, GAMEGEAR_START);
 }
 
-- (oneway void)didPushSMSResetButton;
-{
+- (oneway void)didPushSMSResetButton; {
     sms_button_pressed(1, SMS_CONSOLE_RESET);
 }
 
-- (oneway void)didReleaseSMSResetButton;
-{
+- (oneway void)didReleaseSMSResetButton; {
     sms_button_released(1, SMS_CONSOLE_RESET);
 }
 
-- (void)didPushSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player
-{
+- (void)didPushSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player {
     //console pause, sms_z80_nmi()
     sms_button_pressed((int)player, MasterSystemMap[button]);
 }
 
-- (void)didReleaseSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player
-{
+- (void)didReleaseSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player {
     sms_button_released((int)player, MasterSystemMap[button]);
 }
 
-- (void)didPushColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player;
-{
+- (void)didPushColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player; {
     coleco_button_pressed((int)player, ColecoVisionMap[button]);
 }
 
-- (void)didReleaseColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player;
-{
+- (void)didReleaseColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player; {
     coleco_button_released((int)player, ColecoVisionMap[button]);
 }
 
 #pragma mark - Cheats
 
-- (void)setCheat:(NSString *)code setType:(NSString *)type setEnabled:(BOOL)enabled
-{
+- (void)setCheat:(NSString *)code setType:(NSString *)type setEnabled:(BOOL)enabled {
     // Sanitize
     code = [code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
@@ -470,18 +430,18 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     code = [code stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
     if (enabled)
-        [cheatList setValue:@YES forKey:code];
+        [self.cheatList setValue:@YES forKey:code];
     else
-        [cheatList removeObjectForKey:code];
+        [self.cheatList removeObjectForKey:code];
 
     sms_cheat_reset();
 
     NSArray *multipleCodes = [[NSArray alloc] init];
 
     // Apply enabled cheats found in dictionary
-    for (id key in cheatList)
+    for (id key in self.cheatList)
     {
-        if ([[cheatList valueForKey:key] isEqual:@YES])
+        if ([[self.cheatList valueForKey:key] isEqual:@YES])
         {
             // Handle multi-line cheats
             multipleCodes = [key componentsSeparatedByString:@"+"];
@@ -513,5 +473,60 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
         }
     }
 }
+
+- (void)didPush:(NSInteger)button forPlayer:(NSInteger)player { 
+    switch (cur_console->console_type) {
+        case CONSOLE_SMS:
+            [self didPushMasterSystemButton:button forPlayer:player];
+            break;
+        case CONSOLE_GG:
+            [self didPushMasterSystemButton:button forPlayer:player];
+            break;
+        case CONSOLE_SG1000:
+            [self didPushSG1000Button:button forPlayer:player];
+            break;
+        case CONSOLE_SC3000:
+            [self didPushSG1000Button:button forPlayer:player];
+            break;
+        case CONSOLE_COLECOVISION:
+            [self didPushColecoVisionButton:button forPlayer:player];
+            break;
+//        case CONSOLE_NES:
+//            [self didPushNESButton:button forPlayer:player];
+//            break;
+//        case CONSOLE_CHIP8:
+//            [self didPushCHIP8Button:button forPlayer:player];
+//            break;
+        default:
+            ELOG(@"cur_console->console_type != ANY SYSTEM");
+    }
+}
+
+- (void)didRelease:(NSInteger)button forPlayer:(NSInteger)player { 
+    switch (cur_console->console_type) {
+        case CONSOLE_SMS:
+            [self didReleaseMasterSystemButton:button forPlayer:player];
+            break;
+        case CONSOLE_GG:
+            [self didReleaseMasterSystemButton:button forPlayer:player];
+            break;
+        case CONSOLE_SG1000:
+            [self didReleaseSG1000Button:button forPlayer:player];
+            break;
+        case CONSOLE_SC3000:
+            [self didReleaseSG1000Button:button forPlayer:player];
+            break;
+        case CONSOLE_COLECOVISION:
+            [self didPushColecoVisionButton:button forPlayer:player];
+            break;
+            //        case CONSOLE_NES:
+            //            [self didPushNESButton:button forPlayer:player];
+            //            break;
+            //        case CONSOLE_CHIP8:
+            //            [self didPushCHIP8Button:button forPlayer:player];
+            //            break;
+        default:
+            ELOG(@"cur_console->console_type != ANY SYSTEM");
+    }}
 
 @end

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -61,9 +61,11 @@
 		B305F100276B6B74003AE510 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F0FF276B6B73003AE510 /* unzip.c */; };
 		B305F102276B6BA2003AE510 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B305F101276B6BA2003AE510 /* ioapi.c */; };
 		B305F10A276B6C7C003AE510 /* Core.plist in Resources */ = {isa = PBXBuildFile; fileRef = B305F109276B6C7B003AE510 /* Core.plist */; };
+		B37C00812C01A06700FEC6AC /* PVEmulatorCore in Frameworks */ = {isa = PBXBuildFile; productRef = B37C00802C01A06700FEC6AC /* PVEmulatorCore */; };
+		B37C00832C01A09000FEC6AC /* SMSGameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C00822C01A09000FEC6AC /* SMSGameCore.swift */; };
+		B37C00862C01A11200FEC6AC /* PVSupport in Frameworks */ = {isa = PBXBuildFile; productRef = B37C00852C01A11200FEC6AC /* PVSupport */; };
 		B3AEE315293F41CC0050BDB6 /* smsmem-gg.c in Sources */ = {isa = PBXBuildFile; fileRef = 9443D3C71715F2EB00E452AC /* smsmem-gg.c */; };
 		B3B13AD52B4D1CA4006701B9 /* SMSGameCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C66DFC190F51D82F0080AA28 /* SMSGameCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3B13AD72B4D1D05006701B9 /* PVSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B13AD62B4D1D05006701B9 /* PVSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +229,7 @@
 		B305F101276B6BA2003AE510 /* ioapi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = utils/minizip/ioapi.c; sourceTree = "<group>"; };
 		B305F109276B6C7B003AE510 /* Core.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Core.plist; sourceTree = "<group>"; };
 		B305F158276B7167003AE510 /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B37C00822C01A09000FEC6AC /* SMSGameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSGameCore.swift; sourceTree = "<group>"; };
 		B3AEE314293F412E0050BDB6 /* BuildFlags.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildFlags.xcconfig; sourceTree = "<group>"; };
 		B3B13AD62B4D1D05006701B9 /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3DEEF832942D08900A6957C /* PVSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PVSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,7 +253,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3B13AD72B4D1D05006701B9 /* PVSupport.framework in Frameworks */,
+				B37C00862C01A11200FEC6AC /* PVSupport in Frameworks */,
+				B37C00812C01A06700FEC6AC /* PVEmulatorCore in Frameworks */,
 				B305F0FE276B6B3C003AE510 /* libbz2.tbd in Frameworks */,
 				B305F0F2276B66AB003AE510 /* libz.tbd in Frameworks */,
 				B305F0F5276B6782003AE510 /* libcrabemu.a in Frameworks */,
@@ -310,6 +314,7 @@
 			children = (
 				C66DFC190F51D82F0080AA28 /* SMSGameCore.h */,
 				C66DFC180F51D82F0080AA28 /* SMSGameCore.m */,
+				B37C00822C01A09000FEC6AC /* SMSGameCore.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -647,6 +652,10 @@
 				B305F0F7276B6782003AE510 /* PBXTargetDependency */,
 			);
 			name = PVCrabEmu;
+			packageProductDependencies = (
+				B37C00802C01A06700FEC6AC /* PVEmulatorCore */,
+				B37C00852C01A11200FEC6AC /* PVSupport */,
+			);
 			productName = PVCrabEmu;
 			productReference = B305F0EB276B6696003AE510 /* PVCrabEmu.framework */;
 			productType = "com.apple.product-type.framework";
@@ -668,19 +677,23 @@
 					B305F0EA276B6696003AE510 = {
 						CreatedOnToolsVersion = 13.2;
 						DevelopmentTeam = S32Z3HMYVQ;
+						LastSwiftMigration = 1540;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "PVCrabEmu" */;
-			compatibilityVersion = "Xcode 15.3";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* CrabEmu */;
-			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B37C007F2C01A06700FEC6AC /* XCLocalSwiftPackageReference "../../PVEmulatorCore" */,
+				B37C00842C01A11200FEC6AC /* XCLocalSwiftPackageReference "../../PVSupport" */,
+			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -761,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B37C00832C01A09000FEC6AC /* SMSGameCore.swift in Sources */,
 				B305F0F4276B66BC003AE510 /* SMSGameCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -994,6 +1008,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1047,6 +1062,8 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1060,6 +1077,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1107,6 +1125,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1172,6 +1191,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1219,6 +1239,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4,6";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1306,6 +1327,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		B37C007F2C01A06700FEC6AC /* XCLocalSwiftPackageReference "../../PVEmulatorCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../PVEmulatorCore;
+		};
+		B37C00842C01A11200FEC6AC /* XCLocalSwiftPackageReference "../../PVSupport" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../PVSupport;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B37C00802C01A06700FEC6AC /* PVEmulatorCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PVEmulatorCore;
+		};
+		B37C00852C01A11200FEC6AC /* PVSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PVSupport;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
 }
