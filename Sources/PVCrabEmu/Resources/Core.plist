@@ -5,7 +5,7 @@
 	<key>PVCoreIdentifier</key>
 	<string>com.provenance.core.crabemu</string>
 	<key>PVPrincipleClass</key>
-	<string>SMSGameCore</string>
+	<string>PVCrabEmuSwift.SMSGameCore</string>
 	<key>PVProjectName</key>
 	<string>CrabEMU</string>
 	<key>PVSupportedSystems</key>
