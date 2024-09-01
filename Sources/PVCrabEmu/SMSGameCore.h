@@ -24,11 +24,15 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-//@import Foundation;
-//@import PVSupport;
-//#import <PVSupport/PVEmulatorCore.h>
-//#import <PVSupport/PVSupport-Swift.h>
+@import Foundation;
+@import PVCoreBridge;
+@import PVCrabEmuSwift;
+@import libcrabemu;
+@import PVCoreObjCBridge;
 
-//__attribute__((visibility("default")))
-//@interface SMSGameCore : PVEmulatorCore
-//@end
+@interface SMSGameCore (ObjCCoreBridge) <ObjCCoreBridge, PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
+
+- (double)sampleRate;
+
+@end
+

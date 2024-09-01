@@ -61,11 +61,7 @@
 
 #define SAMPLERATE 44100
 
-@interface SMSGameCore (ObjC) <PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
-
-@end
-
-@implementation SMSGameCore (ObjC)
+@implementation SMSGameCore (ObjCCoreBridge)
 
 // Global variables because the callbacks need to access them...
 static OERingBuffer *ringBuffer;
@@ -241,6 +237,7 @@ console_t *cur_console;
 # pragma mark - Audio
 
 - (double)audioSampleRate{ return SAMPLERATE; }
+- (double)sampleRate{ return SAMPLERATE; }
 
 - (NSUInteger)channelCount { return 2; }
 

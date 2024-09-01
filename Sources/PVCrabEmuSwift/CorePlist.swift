@@ -13,8 +13,8 @@ import PVPlists
 
 #if SWIFT_PACKAGE
 public extension PVBundleFinder {
-    static public var SMSGameCoreModule: Bundle { Bundle.module }
-    static public var SMSGameCoreBundle: Bundle { Bundle(for: SMSGameCore.self) }
+    var SMSGameCoreModule: Bundle { Bundle.module }
+    var SMSGameCoreBundle: Bundle { Bundle(for: SMSGameCore.self) }
 }
 #else
 public extension PVBundleFinder {
