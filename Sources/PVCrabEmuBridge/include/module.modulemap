@@ -1,0 +1,4 @@
+module PVCrabEmuBridge {
+    header "../PVCrabEmuBridge.h"
+    export *
+}

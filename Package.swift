@@ -17,19 +17,20 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "PVCrabEmu",
-            targets: ["PVCrabEmu", "PVCrabEmuSwift"]),
+            targets: ["PVCrabEmu"]),
         .library(
             name: "PVCrabEmu-Dynamic",
             type: .dynamic,
-            targets: ["PVCrabEmu", "PVCrabEmuSwift"]),
+            targets: ["PVCrabEmu"]),
         .library(
             name: "PVCrabEmu-Static",
             type: .static,
-            targets: ["PVCrabEmu", "PVCrabEmuSwift"]),
+            targets: ["PVCrabEmu"]),
     ],
     dependencies: [
         .package(path: "../../PVAudio"),
         .package(path: "../../PVCoreBridge"),
+        .package(path: "../../PVCoreObjCBridge"),
         .package(path: "../../PVEmulatorCore"),
         .package(path: "../../PVLogging"),
         .package(path: "../../PVObjCUtils"),
@@ -42,20 +43,50 @@ let package = Package(
         .package(url: "https://github.com/ZipArchive/ZipArchive.git", branch: "master"),
     ],
     targets: [
+        // MARK: ---- Core ----
+
         .target(
             name: "PVCrabEmu",
             dependencies: [
                 "PVEmulatorCore",
                 "PVCoreBridge",
+                "PVLogging",
+                "PVAudio",
+                "PVSupport",
+                "libcrabemu",
+                "PVPlists",
+                "PVSettings",
+                "PVCrabEmuBridge"
+            ],
+            resources: [
+                .process("Resources/Core.plist")
+            ],
+            cSettings: [
+                .define("USE_STRUCTS", to: "1"),
+                .define("__LIBRETRO__", to: "1"),
+                .define("HAVE_COCOATOJUCH", to: "1"),
+                .define("__GCCUNIX__", to: "1"),
+                .headerSearchPath("../libcrabemu/include"),
+                .headerSearchPath("../libcrabemu/crabemu")
+            ],
+            plugins: [
+                .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
+            ]
+        ),
+        
+        // MARK: ---- Bridge ----
+        .target(
+            name: "PVCrabEmuBridge",
+            dependencies: [
+                "PVEmulatorCore",
+                "PVCoreBridge",
                 "PVSupport",
                 "PVPlists",
+                "PVCoreObjCBridge",
                 "PVObjCUtils",
-                "PVCrabEmuSwift",
                 "PVSettings",
-                //                "PVCrabEmuC",
                 "libcrabemu",
             ],
-            publicHeadersPath: "include",
             cSettings: [
                 .define("USE_STRUCTS", to: "1"),
                 .define("__LIBRETRO__", to: "1"),
@@ -81,59 +112,12 @@ let package = Package(
             ]
         ),
         
-            .target(
-                name: "PVCrabEmuSwift",
-                dependencies: [
-                    "PVEmulatorCore",
-                    "PVCoreBridge",
-                    "PVLogging",
-                    "PVAudio",
-                    "PVSupport",
-                    "libcrabemu",
-                    "PVPlists",
-                    "PVSettings"
-                    //                "PVCrabEmuC"
-                ],
-                resources: [
-                    .process("Resources/Core.plist")
-                ],
-                cSettings: [
-                    .define("USE_STRUCTS", to: "1"),
-                    .define("__LIBRETRO__", to: "1"),
-                    .define("HAVE_COCOATOJUCH", to: "1"),
-                    .define("__GCCUNIX__", to: "1"),
-                    .headerSearchPath("../libcrabemu/include"),
-                    .headerSearchPath("../libcrabemu/crabemu")
-                ],
-                plugins: [
-                    .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
-                ]
-            ),
-        
-        //        .target(
-        //            name: "PVCrabEmuC",
-        //            dependencies: [
-        //                "PVEmulatorCore",
-        //                "PVCoreBridge",
-        //                "PVLogging",
-        //                "PVAudio",
-        //                "PVSupport",
-        //                "libcrabemu",
-        //            ],
-        //            cSettings: [
-        //                .define("USE_STRUCTS", to: "1"),
-        //                .define("__LIBRETRO__", to: "1"),
-        //                .define("HAVE_COCOATOJUCH", to: "1"),
-        //                .define("__GCCUNIX__", to: "1"),
-        //                .headerSearchPath("../libcrabemu/include"),
-        //                .headerSearchPath("../libcrabemu/crabemu")
-        //            ]
-        //        ),
+        // MARK: ---- Emulator ----
         
             .target(
                 name: "libcrabemu",
                 dependencies: [
-                    //                "minizip"
+                    //"minizip"
                     "ZipArchive"
                 ],
                 exclude: [
@@ -193,9 +177,9 @@ let package = Package(
                     .define("CRABZ80_NO_READMAP_FALLBACK"),
                     .define("IN_CRABEMU"),
                     
-                        .define("USE_STRUCTS", to: "1"),
+                    .define("USE_STRUCTS", to: "1"),
                     .define("__LIBRETRO__", to: "1"),
-                    .define("HAVE_COCOATOJUCH", to: "1"),
+                    .define("HAVE_COCOATOUUCH", to: "1"),
                     .define("__GCCUNIX__", to: "1"),
                     .headerSearchPath("./"),
                     .headerSearchPath("crabemu/sound/"),
@@ -218,9 +202,13 @@ let package = Package(
                     .linkedLibrary("z"),
                     .linkedLibrary("bz2")
                 ]
-            )
+            ),
+        // MARK: --- Tests
+        .testTarget(
+            name: "PVCrabEmuTests",
+            dependencies: ["PVCrabEmu"]),
     ],
-    swiftLanguageVersions: [.v5],
+    swiftLanguageModes: [.v5],
     cLanguageStandard: .gnu11,
     cxxLanguageStandard: .gnucxx17
 )

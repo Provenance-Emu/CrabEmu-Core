@@ -25,12 +25,18 @@
  */
 
 @import Foundation;
-@import PVCoreBridge;
-@import PVCrabEmuSwift;
 @import libcrabemu;
 @import PVCoreObjCBridge;
 
-@interface SMSGameCore (ObjCCoreBridge) <ObjCCoreBridge, PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
+@protocol ObjCBridgedCoreBridge;
+@protocol PVMasterSystemSystemResponderClient;
+@protocol PVSG1000SystemResponderClient;
+@protocol PVColecoVisionSystemResponderClient;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything" // Silence "Cannot find protocol definition" warning due to forward declaration.
+@interface PVCrabEmuBridge: PVCoreObjCBridge <ObjCBridgedCoreBridge, PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
+#pragma clang diagnostic pop
 
 - (double)sampleRate;
 

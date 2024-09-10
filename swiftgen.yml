@@ -1,4 +1,4 @@
-input_dir: Sources/PVCrabEMUSwift/Resources/
+input_dir: Sources/PVCrabEMU/Resources/
 #output_dir: Sources/PVCrabEMUSwift/
 output_dir: ${DERIVED_SOURCES_DIR}
 

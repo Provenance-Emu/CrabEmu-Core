@@ -24,13 +24,11 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "SMSGameCore.h"
+#import "PVCrabEmuBridge.h"
 
 @import PVEmulatorCore;
 @import PVLoggingObjC;
 @import PVAudio;
-//@import PVCrabEmuC;
-@import PVCrabEmuSwift;
 @import libcrabemu;
 
 #if !TARGET_OS_MACCATALYST && !TARGET_OS_OSX
@@ -61,7 +59,17 @@
 
 #define SAMPLERATE 44100
 
-@implementation SMSGameCore (ObjCCoreBridge)
+@interface PVCrabEmuBridge () <PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
+{
+    NSLock        *bufLock;
+    BOOL           paused;
+    NSURL         *romFile;
+    NSMutableDictionary *cheatList;
+}
+@end
+
+
+@implementation PVCrabEmuBridge
 
 // Global variables because the callbacks need to access them...
 static OERingBuffer *ringBuffer;
@@ -69,10 +77,9 @@ console_t *cur_console;
 
 - (instancetype)init {
     self = [super init];
-    if(self != nil)
-    {
-        self.bufLock = [[NSLock alloc] init];
-        self.cheatList = [[NSMutableDictionary alloc] init];
+    if(self != nil) {
+        self->bufLock = [[NSLock alloc] init];
+        self->cheatList = [[NSMutableDictionary alloc] init];
         ringBuffer = [self ringBufferAtIndex:0];
     }
     return self;
@@ -87,7 +94,7 @@ console_t *cur_console;
 # pragma mark - Execution
 
 - (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error {
-    self.romFile = [NSURL fileURLWithPath:path];
+    self->romFile = [NSURL fileURLWithPath:path];
     int console = rom_detect_console(path.fileSystemRepresentation);
     VLOG(@"Loaded File");
     //TODO: add choice NTSC/PAL
@@ -144,7 +151,7 @@ console_t *cur_console;
 
     if(cur_console->console_type != CONSOLE_COLECOVISION)
     {
-        NSString *extensionlessFilename = [[self.romFile lastPathComponent] stringByDeletingPathExtension];
+        NSString *extensionlessFilename = [[self->romFile lastPathComponent] stringByDeletingPathExtension];
         NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
         [[NSFileManager defaultManager] createDirectoryAtURL:batterySavesDirectory withIntermediateDirectories:YES attributes:nil error:nil];
         NSURL *saveFile = [batterySavesDirectory URLByAppendingPathComponent:[extensionlessFilename stringByAppendingPathExtension:@"sav"]];
@@ -156,27 +163,23 @@ console_t *cur_console;
     return YES;
 }
 
-- (void)executeFrameSkippingFrame: (BOOL) skip
-{
-    [self.bufLock lock];
+- (void)executeFrameSkippingFrame: (BOOL) skip {
+    [self->bufLock lock];
     cur_console->frame(0);
-    [self.bufLock unlock];
+    [self->bufLock unlock];
 }
 
-- (void)executeFrame
-{
+- (void)executeFrame {
     [self executeFrameSkippingFrame:NO];
 }
 
-- (void)resetEmulation
-{
+- (void)resetEmulation {
     cur_console->soft_reset();
 }
 
 - (void)stopEmulation {
-    if(cur_console->console_type != CONSOLE_COLECOVISION)
-    {
-        NSString *extensionlessFilename = [[self.romFile lastPathComponent] stringByDeletingPathExtension];
+    if(cur_console->console_type != CONSOLE_COLECOVISION) {
+        NSString *extensionlessFilename = [[self->romFile lastPathComponent] stringByDeletingPathExtension];
         NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
         NSURL *saveFile = [batterySavesDirectory URLByAppendingPathComponent:[extensionlessFilename stringByAppendingPathExtension:@"sav"]];
 
@@ -427,25 +430,21 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     code = [code stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
     if (enabled)
-        [self.cheatList setValue:@YES forKey:code];
+        [self->cheatList setValue:@YES forKey:code];
     else
-        [self.cheatList removeObjectForKey:code];
+        [self->cheatList removeObjectForKey:code];
 
     sms_cheat_reset();
 
     NSArray *multipleCodes = [[NSArray alloc] init];
 
     // Apply enabled cheats found in dictionary
-    for (id key in self.cheatList)
-    {
-        if ([[self.cheatList valueForKey:key] isEqual:@YES])
-        {
+    for (id key in self->cheatList) {
+        if ([[self->cheatList valueForKey:key] isEqual:@YES]) {
             // Handle multi-line cheats
             multipleCodes = [key componentsSeparatedByString:@"+"];
-            for (NSString *singleCode in multipleCodes)
-            {
-                if ([singleCode length] == 8)
-                {
+            for (NSString *singleCode in multipleCodes) {
+                if ([singleCode length] == 8) {
                     // Action Replay GG/SMS format: XXXX-YYYY
                     NSString *address = [singleCode substringWithRange:NSMakeRange(0, 4)];
                     NSString *value = [singleCode substringWithRange:NSMakeRange(4, 4)];
