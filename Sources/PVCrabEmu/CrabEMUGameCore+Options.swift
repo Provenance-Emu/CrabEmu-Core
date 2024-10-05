@@ -13,7 +13,7 @@ import PVLogging
 import libcrabemu
 import PVEmulatorCore
 
-extension SMSGameCore: @preconcurrency CoreOptional {
+extension CrabEMUGameCore: @preconcurrency CoreOptional {
     @MainActor public static var options: [CoreOption] {
         var options = [CoreOption]()
  

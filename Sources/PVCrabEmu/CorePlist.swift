@@ -13,16 +13,16 @@ import PVPlists
 
 #if SWIFT_PACKAGE
 public extension PVBundleFinder {
-    var SMSGameCoreModule: Bundle { Bundle.module }
-    var SMSGameCoreBundle: Bundle { Bundle(for: SMSGameCore.self) }
+    var CrabEMUGameCoreModule: Bundle { Bundle.module }
+    var CrabEMUGameCoreBundle: Bundle { Bundle(for: CrabEMUGameCore.self) }
 }
 #else
 public extension PVBundleFinder {
-    static public var SMSGameCoreBundle: Bundle { Bundle(for: SMSGameCore.self) }
+    static public var CrabEMUGameCoreBundle: Bundle { Bundle(for: CrabEMUGameCore.self) }
 }
 #endif
 
-extension SMSGameCore: EmulatorCoreInfoPlistProvider {
+extension CrabEMUGameCore: EmulatorCoreInfoPlistProvider {
 
     @objc
     public static var resourceBundle: Bundle { Bundle.module }

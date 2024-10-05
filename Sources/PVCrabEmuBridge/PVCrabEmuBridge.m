@@ -64,7 +64,6 @@
     NSLock        *bufLock;
     BOOL           paused;
     NSURL         *romFile;
-    NSMutableDictionary *cheatList;
 }
 @end
 
@@ -72,7 +71,7 @@
 @implementation PVCrabEmuBridge
 
 // Global variables because the callbacks need to access them...
-static OERingBuffer *ringBuffer;
+static PVCrabEmuBridge *_current;
 console_t *cur_console;
 
 - (instancetype)init {
@@ -80,7 +79,7 @@ console_t *cur_console;
     if(self != nil) {
         self->bufLock = [[NSLock alloc] init];
         self->cheatList = [[NSMutableDictionary alloc] init];
-        ringBuffer = [self ringBufferAtIndex:0];
+        _current = self;
     }
     return self;
 }
@@ -89,6 +88,9 @@ console_t *cur_console;
     VLOG(@"releasing/deallocating CrabEmu memory");
 
     cur_console->shutdown();
+    if (_current = self) {
+        _current = nil;
+    }
 }
 
 # pragma mark - Execution
@@ -96,14 +98,55 @@ console_t *cur_console;
 - (BOOL)loadFileAtPath:(NSString *)path error:(NSError **)error {
     self->romFile = [NSURL fileURLWithPath:path];
     int console = rom_detect_console(path.fileSystemRepresentation);
+    self.systemType = console;
     VLOG(@"Loaded File");
     //TODO: add choice NTSC/PAL
     if(console == CONSOLE_COLECOVISION)
     {
         NSString *biosPath = [[self BIOSPath] stringByAppendingPathComponent:@"coleco.rom"];
+        BOOL exists = [NSFileManager.defaultManager fileExistsAtPath:biosPath];
+        if (!exists) {
+            biosPath = [[self BIOSPath] stringByAppendingPathComponent:@"colecovision.rom"];
+        }
+        exists = [NSFileManager.defaultManager fileExistsAtPath:biosPath];
+        if (!exists) {
+            NSDictionary *userInfo = @{
+                NSLocalizedDescriptionKey: @"Failed to find BIOS.",
+                NSLocalizedFailureReasonErrorKey: @"CrabEMU failed to find a provided BIOS.",
+                NSLocalizedRecoverySuggestionErrorKey: FORMAT(@"Upload BIOS as `coleco.rom` to %@.", self.BIOSPath)
+            };
+            *error = [NSError errorWithDomain:CoreError.PVEmulatorCoreErrorDomain
+                                        code:PVEmulatorCoreErrorCodeCouldNotLoadBIOS
+                                    userInfo:userInfo];
+            return false;
+        }
         coleco_init(VIDEO_NTSC);
-        coleco_mem_load_bios(biosPath.fileSystemRepresentation);
-        coleco_mem_load_rom(path.fileSystemRepresentation);
+        /// ROM_LOAD_E_ERRNO
+        /// ROM_LOAD_SUCCESS
+        int biosLoaded = coleco_mem_load_bios(biosPath.fileSystemRepresentation);
+        if(biosLoaded != ROM_LOAD_SUCCESS) {
+            NSDictionary *userInfo = @{
+                NSLocalizedDescriptionKey: @"Failed to load BIOS.",
+                NSLocalizedFailureReasonErrorKey: @"CrabEMU failed to load provided BIOS.",
+                NSLocalizedRecoverySuggestionErrorKey: @"Try re-importing the correct BIOS."
+            };
+            *error = [NSError errorWithDomain:CoreError.PVEmulatorCoreErrorDomain
+                                        code:PVEmulatorCoreErrorCodeCouldNotLoadBIOS
+                                    userInfo:userInfo];
+            return false;
+        }
+        int romLoaded = coleco_mem_load_rom(path.fileSystemRepresentation);
+        if(romLoaded != ROM_LOAD_SUCCESS) {
+            NSDictionary *userInfo = @{
+                NSLocalizedDescriptionKey: @"Failed to save state.",
+                NSLocalizedFailureReasonErrorKey: @"CrabEMU failed to save state.",
+                NSLocalizedRecoverySuggestionErrorKey: @"Try re-importing a new ROM file."
+            };
+            *error = [NSError errorWithDomain:CoreError.PVEmulatorCoreErrorDomain
+                                        code:PVEmulatorCoreErrorCodeCouldNotLoadRom
+                                    userInfo:userInfo];
+            return false;
+        }
     }
     else
     {
@@ -144,8 +187,30 @@ console_t *cur_console;
             // No header means Japan region
             region = SMS_REGION_DOMESTIC;
 
-        sms_init(SMS_VIDEO_NTSC, region, 0); // 1 = VDP borders
-        sms_mem_load_rom(path.fileSystemRepresentation, console);
+        int initStatus = sms_init(SMS_VIDEO_NTSC, region, 1); // 1 = VDP borders
+        if(initStatus != ROM_LOAD_SUCCESS) {
+            NSDictionary *userInfo = @{
+                NSLocalizedDescriptionKey: @"Failed to save state.",
+                NSLocalizedFailureReasonErrorKey: @"CrabEMU failed to save state.",
+                NSLocalizedRecoverySuggestionErrorKey: @"Try re-importing a new ROM file."
+            };
+            *error = [NSError errorWithDomain:CoreError.PVEmulatorCoreErrorDomain
+                                        code:PVEmulatorCoreErrorCodeCouldNotLoadRom
+                                    userInfo:userInfo];
+            return false;
+        }
+        int romLoaded = sms_mem_load_rom(path.fileSystemRepresentation, console);
+        if(romLoaded != ROM_LOAD_SUCCESS) {
+            NSDictionary *userInfo = @{
+                NSLocalizedDescriptionKey: @"Failed to save state.",
+                NSLocalizedFailureReasonErrorKey: @"CrabEMU failed to save state.",
+                NSLocalizedRecoverySuggestionErrorKey: @"Try re-importing a new ROM file."
+            };
+            *error = [NSError errorWithDomain:CoreError.PVEmulatorCoreErrorDomain
+                                        code:PVEmulatorCoreErrorCodeCouldNotLoadRom
+                                    userInfo:userInfo];
+            return false;
+        }
         cur_console->frame(0);
     }
 
@@ -246,20 +311,43 @@ console_t *cur_console;
 
 # pragma mark - Save States
 
-- (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))__attribute__((noescape)) block {
-    block(cur_console->save_state([fileName fileSystemRepresentation]) == 0, nil);
+- (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(NSError *))__attribute__((noescape)) block {
+    BOOL success = cur_console->save_state([fileName fileSystemRepresentation]) == 0;
+    NSError *error;
+    if(!success) {
+        NSDictionary *userInfo = @{
+            NSLocalizedDescriptionKey: @"Failed to save state.",
+            NSLocalizedFailureReasonErrorKey: @"CrabEMU failed to save state."
+        };
+        error = [NSError errorWithDomain:CoreError.PVEmulatorCoreErrorDomain
+                                    code:PVEmulatorCoreErrorCodeCouldNotLoadRom
+                                userInfo:userInfo];
+    }
+    block(error);
 }
 
-- (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))__attribute__((noescape)) block {
+- (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(NSError *))__attribute__((noescape)) block {
     if([[self systemIdentifier] isEqualToString:@"com.provenance.sg1000"]) {
         cur_console->load_state([fileName fileSystemRepresentation]);
-        block(YES, nil);
+        block(nil);
     }
     else {
-        block(cur_console->load_state([fileName fileSystemRepresentation]) == 0, nil);
+        BOOL success = cur_console->load_state([fileName fileSystemRepresentation]) == 0;
+        NSError *error;
+        if(!success) {
+            NSDictionary *userInfo = @{
+                NSLocalizedDescriptionKey: @"Failed to load save state.",
+                NSLocalizedFailureReasonErrorKey: @"CrabEMU failed load the save state."
+            };
+            error = [NSError errorWithDomain:CoreError.PVEmulatorCoreErrorDomain
+                                        code:PVEmulatorCoreErrorCodeCouldNotLoadRom
+                                    userInfo:userInfo];
+        }
+        block(error);
     }
 }
 
+#warning This is never used, should we use this instead per system?
 - (NSData *)serializeStateWithError:(NSError **)outError {
     void *bytes;
     size_t length;
@@ -320,7 +408,7 @@ console_t *cur_console;
  */
 
 void sound_update_buffer(signed short *buf, int length) {
-    [ringBuffer writeBuffer:buf maxLength:length];
+    [[_current ringBufferAtIndex:0] write:buf size:length];
 }
 
 int sound_init(int channels, int region) {

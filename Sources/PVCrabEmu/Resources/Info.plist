@@ -21,7 +21,7 @@
 	<key>NSPrincipalClass</key>
 	<string>OEGameCoreController</string>
 	<key>OEGameCoreClass</key>
-	<string>SMSGameCore</string>
+	<string>CrabEMUGameCore</string>
 	<key>OEGameCoreOptions</key>
 	<dict>
 		<key>openemu.system.colecovision</key>

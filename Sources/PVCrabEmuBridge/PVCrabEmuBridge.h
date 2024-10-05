@@ -29,16 +29,39 @@
 @import PVCoreObjCBridge;
 
 @protocol ObjCBridgedCoreBridge;
+@protocol GameWithCheat;
 @protocol PVMasterSystemSystemResponderClient;
 @protocol PVSG1000SystemResponderClient;
 @protocol PVColecoVisionSystemResponderClient;
+
+typedef NS_ENUM(NSInteger, CrabEMUSystemType) {
+    None = CONSOLE_NULL,
+    SMS = CONSOLE_SMS,
+    GameGear = CONSOLE_GG,
+    SG1000 = CONSOLE_SG1000,
+    SC3000 = CONSOLE_SC3000,
+    ColecoVision = CONSOLE_COLECOVISION,
+    NES = CONSOLE_NES,
+    Chip8 = CONSOLE_CHIP8
+};
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything" // Silence "Cannot find protocol definition" warning due to forward declaration.
 @interface PVCrabEmuBridge: PVCoreObjCBridge <ObjCBridgedCoreBridge, PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
 #pragma clang diagnostic pop
+{
+    @public
+    NSMutableDictionary *cheatList;
+}
 
+@property (nonatomic, assign) CrabEMUSystemType systemType;
 - (double)sampleRate;
 
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything" // Silence "Cannot find protocol definition" warning due to forward declaration.
+@interface PVCrabEmuBridge (GameWithCheat) <GameWithCheat>
+#pragma clang diagnostic pop
+- (void)setCheat:(NSString *)code setType:(NSString *)type setEnabled:(BOOL)enabled;
+@end
