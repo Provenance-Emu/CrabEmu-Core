@@ -271,7 +271,9 @@ console_t *cur_console;
 }
 
 - (CGSize)aspectSize {
-    return CGSizeMake(cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0), cur_console->console_type == CONSOLE_GG ? 144 : 192);
+    CGFloat width = cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0);
+    CGFloat height = cur_console->console_type == CONSOLE_GG ? 144 : 192;
+    return CGSizeMake(width, height);
 }
 
 - (const void *)videoBuffer {
@@ -287,19 +289,18 @@ console_t *cur_console;
 //    return smsvdp.framebuffer = (uint32*)hint;
 //}
 
+// Note: These colors are for colecovision 16bit mode
+// See `CRABEMU_32BIT_COLOR` if using 32Bit colors
 - (GLenum)pixelFormat {
-    return GL_BGRA; //GL_BGRA;
+    return GL_RGB;
 }
 
 - (GLenum)pixelType {
-    return GL_UNSIGNED_INT;
-//    return GL_UNSIGNED_INT_VEC4;
-//    return GL_UNSIGNED_INT_24_8;
+    return GL_UNSIGNED_SHORT_5_6_5;
 }
 
 - (GLenum)internalPixelFormat {
-    return GL_RGBA8;
-//    return GL_RGBA;
+    return GL_RGB;
 }
 
 # pragma mark - Audio
