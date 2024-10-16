@@ -4,10 +4,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "PVCrabEmu",
+    name: "PCoreCrabEmu",
     platforms: [
         .iOS(.v17),
-        .tvOS("15.4"),
+        .tvOS(.v17),
         .watchOS(.v9),
         .macOS(.v11),
         .macCatalyst(.v17),

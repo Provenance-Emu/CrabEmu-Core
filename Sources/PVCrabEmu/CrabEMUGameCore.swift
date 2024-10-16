@@ -17,9 +17,9 @@ import GameController
 
 @objc
 @objcMembers
-public class CrabEMUGameCore: PVEmulatorCore, @unchecked Sendable {
+public class CrabEMUGameCore: PVEmulatorCore {
     
-    let _bridge: PVCrabEmuBridge = .init()
+    lazy var _bridge: PVCrabEmuBridge = .init()
     
     required init() {
         super.init()
