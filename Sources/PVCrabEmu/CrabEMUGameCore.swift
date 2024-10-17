@@ -23,12 +23,13 @@ public class CrabEMUGameCore: PVEmulatorCore {
     
     required init() {
         super.init()
+        self.bridge = (_bridge as! any ObjCBridgedCoreBridge)
+        
         #if NO_ZLIB
         self.extractArchive = true
         #else
         self.extractArchive = false
         #endif
-        self.bridge = (_bridge as! any ObjCBridgedCoreBridge)
     }
     
     // CrabEMu
@@ -70,6 +71,15 @@ extension CrabEMUGameCore: GameWithCheat {
         default:
             return []
         }
+    }
+}
+
+extension CrabEMUGameCore: PVGenesisSystemResponderClient {
+    public func didPush(_ button: PVCoreBridge.PVGenesisButton, forPlayer player: Int) {
+        (_bridge as! PVGenesisSystemResponderClient).didPush(button, forPlayer: player)
+    }
+    public func didRelease(_ button: PVCoreBridge.PVGenesisButton, forPlayer player: Int) {
+        (_bridge as! PVGenesisSystemResponderClient).didRelease(button, forPlayer: player)
     }
 }
 extension CrabEMUGameCore: PVSG1000SystemResponderClient {
