@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "PCoreCrabEmu",
+    name: "PVCoreCrabEmu",
     platforms: [
         .iOS(.v17),
         .tvOS(.v17),
