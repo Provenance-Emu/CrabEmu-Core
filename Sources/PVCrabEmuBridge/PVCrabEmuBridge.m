@@ -559,7 +559,7 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     }
 }
 
-- (void)didPush:(NSInteger)button forPlayer:(NSInteger)player { 
+- (void)didPush:(NSInteger)button forPlayer:(NSInteger)player {
     switch (cur_console->console_type) {
         case CONSOLE_SMS:
             [self didPushMasterSystemButton:button forPlayer:player];
@@ -587,7 +587,7 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     }
 }
 
-- (void)didRelease:(NSInteger)button forPlayer:(NSInteger)player { 
+- (void)didRelease:(NSInteger)button forPlayer:(NSInteger)player {
     switch (cur_console->console_type) {
         case CONSOLE_SMS:
             [self didReleaseMasterSystemButton:button forPlayer:player];
@@ -602,7 +602,7 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
             [self didReleaseSG1000Button:button forPlayer:player];
             break;
         case CONSOLE_COLECOVISION:
-            [self didPushColecoVisionButton:button forPlayer:player];
+            [self didReleaseColecoVisionButton:button forPlayer:player];
             break;
             //        case CONSOLE_NES:
             //            [self didPushNESButton:button forPlayer:player];
