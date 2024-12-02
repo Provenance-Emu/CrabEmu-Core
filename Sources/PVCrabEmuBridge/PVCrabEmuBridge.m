@@ -60,13 +60,6 @@
 #define SAMPLERATE 44100
 
 // Add these constants at the top of the file if they're not already defined
-#define COLECOVISION_UP 0x01
-#define COLECOVISION_DOWN 0x02
-#define COLECOVISION_LEFT 0x04
-#define COLECOVISION_RIGHT 0x08
-#define COLECOVISION_L_ACTION 0x40
-#define COLECOVISION_R_ACTION 0x80
-// ... add other button constants
 
 @interface PVCrabEmuBridge () <PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
 {
@@ -500,14 +493,19 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
 
 - (void)didPushSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player {
     //console pause, sms_z80_nmi()
+    player = player + 1;
+
     sms_button_pressed((int)player, MasterSystemMap[button]);
 }
 
 - (void)didReleaseSG1000Button:(PVSG1000Button)button forPlayer:(NSInteger)player {
+    player = player + 1;
+
     sms_button_released((int)player, MasterSystemMap[button]);
 }
 
 - (void)didPushColecoVisionButton:(enum PVColecoVisionButton)button forPlayer:(NSInteger)player {
+    player = player + 1;
     switch (button) {
         case PVColecoVisionButtonUp:
             coleco_button_pressed((int)player, COLECOVISION_UP);
@@ -570,6 +568,8 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
 }
 
 - (void)didReleaseColecoVisionButton:(enum PVColecoVisionButton)button forPlayer:(NSInteger)player {
+    player = player + 1;
+
     switch (button) {
         case PVColecoVisionButtonUp:
             coleco_button_released((int)player, COLECOVISION_UP);
