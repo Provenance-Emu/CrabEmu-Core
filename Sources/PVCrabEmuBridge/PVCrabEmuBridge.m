@@ -59,6 +59,15 @@
 
 #define SAMPLERATE 44100
 
+// Add these constants at the top of the file if they're not already defined
+#define COLECOVISION_UP 0x01
+#define COLECOVISION_DOWN 0x02
+#define COLECOVISION_LEFT 0x04
+#define COLECOVISION_RIGHT 0x08
+#define COLECOVISION_L_ACTION 0x40
+#define COLECOVISION_R_ACTION 0x80
+// ... add other button constants
+
 @interface PVCrabEmuBridge () <PVMasterSystemSystemResponderClient, PVSG1000SystemResponderClient, PVColecoVisionSystemResponderClient>
 {
     NSLock        *bufLock;
@@ -498,12 +507,127 @@ const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_
     sms_button_released((int)player, MasterSystemMap[button]);
 }
 
-- (void)didPushColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player; {
-    coleco_button_pressed((int)player, ColecoVisionMap[button]);
+- (void)didPushColecoVisionButton:(enum PVColecoVisionButton)button forPlayer:(NSInteger)player {
+    switch (button) {
+        case PVColecoVisionButtonUp:
+            coleco_button_pressed((int)player, COLECOVISION_UP);
+            break;
+        case PVColecoVisionButtonDown:
+            coleco_button_pressed((int)player, COLECOVISION_DOWN);
+            break;
+        case PVColecoVisionButtonLeft:
+            coleco_button_pressed((int)player, COLECOVISION_LEFT);
+            break;
+        case PVColecoVisionButtonRight:
+            coleco_button_pressed((int)player, COLECOVISION_RIGHT);
+            break;
+        case PVColecoVisionButtonLeftAction:
+            coleco_button_pressed((int)player, COLECOVISION_L_ACTION);
+            break;
+        case PVColecoVisionButtonRightAction:
+            coleco_button_pressed((int)player, COLECOVISION_R_ACTION);
+            break;
+        // Handle keypad buttons
+        case PVColecoVisionButton1:
+            coleco_button_pressed((int)player, COLECOVISION_1);
+            break;
+        case PVColecoVisionButton2:
+            coleco_button_pressed((int)player, COLECOVISION_2);
+            break;
+        case PVColecoVisionButton3:
+            coleco_button_pressed((int)player, COLECOVISION_3);
+            break;
+        case PVColecoVisionButton4:
+            coleco_button_pressed((int)player, COLECOVISION_4);
+            break;
+        case PVColecoVisionButton5:
+            coleco_button_pressed((int)player, COLECOVISION_5);
+            break;
+        case PVColecoVisionButton6:
+            coleco_button_pressed((int)player, COLECOVISION_6);
+            break;
+        case PVColecoVisionButton7:
+            coleco_button_pressed((int)player, COLECOVISION_7);
+            break;
+        case PVColecoVisionButton8:
+            coleco_button_pressed((int)player, COLECOVISION_8);
+            break;
+        case PVColecoVisionButton9:
+            coleco_button_pressed((int)player, COLECOVISION_9);
+            break;
+        case PVColecoVisionButton0:
+            coleco_button_pressed((int)player, COLECOVISION_0);
+            break;
+        case PVColecoVisionButtonAsterisk:
+            coleco_button_pressed((int)player, COLECOVISION_STAR);
+            break;
+        case PVColecoVisionButtonPound:
+            coleco_button_pressed((int)player, COLECOVISION_POUND);
+            break;
+        default:
+            break;
+    }
 }
 
-- (void)didReleaseColecoVisionButton:(PVColecoVisionButton)button forPlayer:(NSInteger)player; {
-    coleco_button_released((int)player, ColecoVisionMap[button]);
+- (void)didReleaseColecoVisionButton:(enum PVColecoVisionButton)button forPlayer:(NSInteger)player {
+    switch (button) {
+        case PVColecoVisionButtonUp:
+            coleco_button_released((int)player, COLECOVISION_UP);
+            break;
+        case PVColecoVisionButtonDown:
+            coleco_button_released((int)player, COLECOVISION_DOWN);
+            break;
+        case PVColecoVisionButtonLeft:
+            coleco_button_released((int)player, COLECOVISION_LEFT);
+            break;
+        case PVColecoVisionButtonRight:
+            coleco_button_released((int)player, COLECOVISION_RIGHT);
+            break;
+        case PVColecoVisionButtonLeftAction:
+            coleco_button_released((int)player, COLECOVISION_L_ACTION);
+            break;
+        case PVColecoVisionButtonRightAction:
+            coleco_button_released((int)player, COLECOVISION_R_ACTION);
+            break;
+        case PVColecoVisionButtonAsterisk:
+            coleco_button_released((int)player, COLECOVISION_STAR);
+            break;
+        case PVColecoVisionButtonPound:
+            coleco_button_released((int)player, COLECOVISION_POUND);
+            break;
+        case PVColecoVisionButton1:
+            coleco_button_released((int)player, COLECOVISION_1);
+            break;
+        case PVColecoVisionButton2:
+            coleco_button_released((int)player, COLECOVISION_2);
+            break;
+        case PVColecoVisionButton3:
+            coleco_button_released((int)player, COLECOVISION_3);
+            break;
+        case PVColecoVisionButton4:
+            coleco_button_released((int)player, COLECOVISION_4);
+            break;
+        case PVColecoVisionButton5:
+            coleco_button_released((int)player, COLECOVISION_5);
+            break;
+        case PVColecoVisionButton6:
+            coleco_button_released((int)player, COLECOVISION_6);
+            break;
+        case PVColecoVisionButton7:
+            coleco_button_released((int)player, COLECOVISION_7);
+            break;
+        case PVColecoVisionButton8:
+            coleco_button_released((int)player, COLECOVISION_8);
+            break;
+        case PVColecoVisionButton9:
+            coleco_button_released((int)player, COLECOVISION_9);
+            break;
+        case PVColecoVisionButton0:
+            coleco_button_released((int)player, COLECOVISION_0);
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Cheats
