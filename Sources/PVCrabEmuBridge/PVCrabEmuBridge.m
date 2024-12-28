@@ -216,7 +216,7 @@ console_t *cur_console;
         cur_console->frame(0);
     }
 
-    if(cur_console->console_type != CONSOLE_COLECOVISION)
+    if(cur_console != nil && cur_console->console_type != CONSOLE_COLECOVISION)
     {
         NSString *extensionlessFilename = [[self->romFile lastPathComponent] stringByDeletingPathExtension];
         NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
@@ -232,7 +232,9 @@ console_t *cur_console;
 
 - (void)executeFrameSkippingFrame: (BOOL) skip {
     [self->bufLock lock];
-    cur_console->frame(0);
+    if(cur_console != nil){
+        cur_console->frame(0);
+    }
     [self->bufLock unlock];
 }
 
@@ -241,11 +243,13 @@ console_t *cur_console;
 }
 
 - (void)resetEmulation {
-    cur_console->soft_reset();
+    if(cur_console != nil){
+        cur_console->soft_reset();
+    }
 }
 
 - (void)stopEmulation {
-    if(cur_console->console_type != CONSOLE_COLECOVISION) {
+    if(cur_console != nil && cur_console->console_type != CONSOLE_COLECOVISION) {
         NSString *extensionlessFilename = [[self->romFile lastPathComponent] stringByDeletingPathExtension];
         NSURL *batterySavesDirectory = [NSURL fileURLWithPath:[self batterySavesPath]];
         NSURL *saveFile = [batterySavesDirectory URLByAppendingPathComponent:[extensionlessFilename stringByAppendingPathExtension:@"sav"]];
