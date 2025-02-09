@@ -14,7 +14,7 @@ import libcrabemu
 import PVEmulatorCore
 
 extension CrabEMUGameCore: @preconcurrency CoreOptional {
-    @MainActor public static var options: [CoreOption] {
+    public static var options: [CoreOption] {
         var options = [CoreOption]()
  
         #warning("TODO: Impliment this the options")
@@ -38,7 +38,6 @@ extension CrabEMUGameCore: @preconcurrency CoreOptional {
     
     // MARK: ----- Video ------ //
     
-    @MainActor
     public func get(variable: String) -> Any? {
         switch variable {
         default:
