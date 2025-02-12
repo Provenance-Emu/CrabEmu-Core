@@ -13,7 +13,8 @@ import PVLogging
 import libcrabemu
 import PVEmulatorCore
 
-extension CrabEMUGameCore: @preconcurrency CoreOptional {
+#if false
+extension CrabEMUGameCore: CoreOptional {
     public static var options: [CoreOption] {
         var options = [CoreOption]()
  
@@ -46,3 +47,4 @@ extension CrabEMUGameCore: @preconcurrency CoreOptional {
         }
     }
 }
+#endif
