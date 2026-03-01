@@ -277,6 +277,9 @@ console_t *cur_console;
 }
 
 - (CGSize)aspectSize {
+    if(cur_console == nil) {
+        return CGSizeMake(256 * (8.0/7.0), 192);
+    }
     CGFloat width = cur_console->console_type == CONSOLE_GG ? 160 : 256 * (8.0/7.0);
     CGFloat height = cur_console->console_type == CONSOLE_GG ? 144 : 192;
     return CGSizeMake(width, height);
