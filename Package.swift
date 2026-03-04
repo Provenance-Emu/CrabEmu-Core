@@ -37,6 +37,7 @@ let package = Package(
         .package(path: "../../PVPlists"),
         .package(path: "../../PVSupport"),
         .package(path: "../../PVSettings"),
+        .package(name: "PVPrimitives", path: "../PVPrimitives/"),
         .package(url: "https://github.com/Provenance-Emu/SwiftGenPlugin.git", branch: "develop"),
         
         //        .package(path: "../../External/minizip")
@@ -53,6 +54,7 @@ let package = Package(
                 "PVLogging",
                 "PVAudio",
                 "PVSupport",
+                "PVPrimitives",
                 "libcrabemu",
                 "PVPlists",
                 "PVSettings",
