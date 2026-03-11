@@ -451,7 +451,9 @@ void gui_set_console(console_t *c) {
 
 # pragma mark - Input
 
-const int MasterSystemMap[] = {SMS_UP, SMS_DOWN, SMS_LEFT, SMS_RIGHT, SMS_BUTTON_1, SMS_BUTTON_2, GAMEGEAR_START};
+// Ordered to match PVMasterSystemButton / PVSG1000Button enum raw values:
+// b=0, c=1, start=2, up=3, down=4, left=5, right=6
+const int MasterSystemMap[] = {SMS_BUTTON_1, SMS_BUTTON_2, GAMEGEAR_START, SMS_UP, SMS_DOWN, SMS_LEFT, SMS_RIGHT};
 const int ColecoVisionMap[] = {COLECOVISION_UP, COLECOVISION_DOWN, COLECOVISION_LEFT, COLECOVISION_RIGHT, COLECOVISION_L_ACTION, COLECOVISION_R_ACTION, COLECOVISION_1, COLECOVISION_2, COLECOVISION_3, COLECOVISION_4, COLECOVISION_5, COLECOVISION_6, COLECOVISION_7, COLECOVISION_8, COLECOVISION_9, COLECOVISION_0, COLECOVISION_STAR, COLECOVISION_POUND};
 
 //- (oneway void)didPushMasterSystemButton:(PVMasterSystemButton)button;
